@@ -1,0 +1,52 @@
+.card{
+  /* border:1px solid var(--line); */
+  background:var(--brand-white);
+  /* border-radius:var(--radius); */
+  padding: 0;
+  box-shadow:0 1px 12px rgba(0,0,0,.04);
+}
+
+.card h3{margin-top:.2rem;margin-bottom:.4rem;font-size:1.12rem}
+
+.card .card-image {
+    height: 300px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.card .card-content {
+    padding: 1rem 1.1rem;
+    text-align: center;
+    font-family: "Lato", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+    font-size: 1.1rem
+}
+
+.card .card-content h3 {
+  /* font-family: "Lato", sans-serif; */
+  font-weight: 300;
+  font-style: italic;
+  font-size: 1.75rem
+}
+
+.card .card-cta {
+    padding: 1rem 1.1rem;
+    text-align: center;
+    font-family: "Lato", sans-serif;
+    font-weight: 300;
+    font-style: regular;
+    font-size: 1.1rem;
+    border: none;
+}
+.card .card-cta .btn {
+    background-color: var(--brand-primary);
+    color: var(--brand-white);
+    border: none;
+}
+
+.card .card-cta .btn:hover {
+    background-color: var(--brand-secondary);
+    color: var(--brand-white);
+}

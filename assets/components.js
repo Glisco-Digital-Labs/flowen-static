@@ -42,8 +42,9 @@
   // Grid
   class PYGrid extends HTMLElement{
     connectedCallback(){
+      const style = this.getAttribute('style') || '';
       const body = this.innerHTML;
-      this.innerHTML = `<div class="grid">${body}</div>`;
+      this.innerHTML = `<div class="grid ${style}">${body}</div>`;
     }
   }
   customElements.define('py-grid', PYGrid);
@@ -107,14 +108,24 @@
   class PYCard extends HTMLElement{
     connectedCallback(){
       const title = this.getAttribute('title') || '';
+      const subtitle = this.getAttribute('subtitle') || '';
+      const image = this.getAttribute('image') || ''; // optional
+      const style = this.getAttribute('style') || 'ystack'; // one of ['ystack', 'xstack', 'zstack']
       const href  = this.getAttribute('href')  || '#';
       const btn   = this.getAttribute('button-label') || 'Ver mais';
       const body  = this.innerHTML.trim();
       this.innerHTML = `
         <article class="card">
-          ${title ? `<h3>${title}</h3>` : ''}
-          <div class="card-body">${body}</div>
-          <p><a class="btn" href="${href}" aria-label="${title ? `Abrir ${title}` : 'Ver mais'}">${btn}</a></p>
+          ${image ? `<div class="card-image" style="background-image:url('${image}');"></div>` : ''}
+          <div class="card-content ${style}">
+            ${title ? `<h3>${title}</h3>` : ''}
+            ${subtitle ? `<p class="sub">${subtitle}</p>` : ''}
+            <div class="card-body">${body}</div>
+          </div>
+          <div class="card-cta">
+            <a class="btn" href="${href}" aria-label="${title ? `Abrir ${title}` : 'Ver mais'}">${btn}</a>
+          </div>
+          
         </article>
       `;
     }
