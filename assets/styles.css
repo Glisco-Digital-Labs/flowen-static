@@ -1,4 +1,6 @@
-/* Minimal, modern styles for Patsy Yoga */
+@import url("fonts.css");
+@import url("hero.css");
+/* Minimal, modern styles for Flowen Yoga */
 :root{
   --maxw: 1100px;
   --gap: 1.2rem;
@@ -8,12 +10,14 @@
   --bg: #ffffff;
   --card: #ffffff;
   --line: #e8e8ef;
+  --brand-white: #f0ebdc;
+  --brand-primary: #294565;
 }
 @media (prefers-color-scheme: dark){
   :root{
-    --text: #e9e9ea;
+    --bg: #e9e9ea;
     --muted: #a9a9ad;
-    --bg: #0b0b0c;
+    --text: #0b0b0c;
     --card: #131316;
     --line: #232327;
   }
@@ -28,24 +32,23 @@ body{
 }
 .wrap{max-width:var(--maxw);margin:0 auto;padding:1.2rem}
 a{color:inherit}
+
 header.site{
-  border-bottom:1px solid var(--line);
-  background:var(--card);
+  /* border-bottom:1px solid var(--line); */
+  /* background:var(--card); */
 }
+
 header.site .wrap{
   display:flex; flex-wrap:wrap; gap:1rem;
   align-items:center; justify-content:space-between;
 }
+
 .brand h1{margin:0;font-size:clamp(1.2rem,3.2vw,1.6rem)}
 .brand .sub{margin:0;color:var(--muted); font-size:.95rem}
 nav.site a{
   text-decoration:none; padding:.55rem .7rem; border-radius:.6rem;
 }
 nav.site a:hover{background:rgba(127,127,127,.12)}
-.hero{
-  padding: clamp(1.2rem, 3vw, 2rem) 0;
-}
-.hero h1{font-size:clamp(1.6rem,4.2vw,2.4rem); margin:.2rem 0}
 .lead{color:var(--muted)}
 h2{font-size:clamp(1.2rem,3.2vw,1.6rem)}
 /* Grid + Card */
@@ -77,3 +80,4 @@ footer.site{
 /* Utilities */
 .stack > * + *{margin-top: .8rem;}
 section > h2{margin-top:0.6rem}
+

@@ -1,0 +1,70 @@
+.hero {
+  position: relative;           /* establishes stacking context */
+  isolation: isolate;           /* keeps overlay behind content */
+  min-height: 56vh;
+  display: grid;
+  align-items: center;
+  overflow: hidden;
+  color: #fff;
+  /* padding: clamp(2rem, 6vw, 6rem) clamp(1rem, 4vw, 3rem); */
+  padding: 0;
+}
+
+/* ABSOLUTE media stack so it does NOT push content down */
+.hero-media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;                   /* behind content */
+}
+
+.hero-image,
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+}
+
+.hero-image {
+  background-size: cover;
+  background-position: center 30%;
+  background-repeat: no-repeat;
+  transform: scale(1.02);
+}
+
+.hero-overlay {
+  background: linear-gradient(to bottom, rgba(0,0,0,.55), rgba(0,0,0,.35));
+}
+
+/* Content sits above */
+.hero-content {
+  position: relative;
+  z-index: 1;                   /* above media stack */
+  max-width: 70rem;
+  margin-inline: auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column; /* stack vertically */
+  gap: 2rem; 
+  margin-top: 20% !important;
+}
+
+.hero-content h1 {
+    font-size: clamp(1.6rem, 4.2vw, 2.4rem);
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    margin: 0 0 0.5rem 0;
+    text-shadow: 0 2px 16px rgba(0,0,0,.35);
+}
+
+.hero-content .sub {
+    /* color: var(--muted); */
+    font-size: clamp(1rem, 2.4vw, 2.2rem);
+    margin: 0;
+}
+
+.hero-content .hero-cta .btn {
+    background-color: var(--brand-white);
+    opacity: 0.8;
+    color: var(--brand-primary);
+    border: none;
+    /* font-weight: bold; */
+}

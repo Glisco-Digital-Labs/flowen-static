@@ -1,4 +1,4 @@
-// Lightweight Web Components for Patsy Yoga
+// Lightweight Web Components for Flowen Yoga
 (function(){
   // Header
   class PYHeader extends HTMLElement{
@@ -48,6 +48,61 @@
   }
   customElements.define('py-grid', PYGrid);
 
+  // Section
+  class PYSection extends HTMLElement{
+    connectedCallback(){
+      const title = this.getAttribute('title') || '';
+      const subtitle = this.getAttribute('subtitle') || '';
+      const body = this.innerHTML.trim();
+      this.innerHTML = `
+        <section class="section">
+          <div class="wrap">
+            ${title ? `<h2 class="section-title">${title}</h2>` : ''}
+            ${subtitle ? `<p class="section-subtitle">${subtitle}</p>` : ''}
+            <div class="section-body">${body}</div>
+          </div>
+        </section>
+      `;
+    }
+  }
+  customElements.define('py-section', PYSection);
+
+  class PYHero extends HTMLElement {
+    connectedCallback() {
+      const title     = this.getAttribute('title') || '';
+      const subtitle  = this.getAttribute('subtitle') || '';
+      const ctaText   = this.getAttribute('cta-text') || '';
+      const ctaLink   = this.getAttribute('cta-link') || '#';
+      const image     = this.getAttribute('image') || '';                 // e.g. /assets/hero.jpg
+      const overlay   = this.getAttribute('overlay')                      // e.g. "rgba(0,0,0,.5)" or "linear-gradient(...)"
+                        || 'linear-gradient(to bottom, rgba(0,0,0,.55), rgba(0,0,0,.35))';
+      const position  = this.getAttribute('position') || 'center 30%';    // CSS background-position
+      const minH      = this.getAttribute('min-h') || '52vh';             // optional
+
+      const ctaContent = ctaLink ? `<a class="btn" href="${ctaLink}" aria-label="${ctaText}">${ctaText}</a>` : ctaText;
+      const cta        = ctaText ? ctaContent : '';
+
+      console.log('Hero component:', this.getAttribute('overlay') ? 'with overlay' : 'no overlay');
+      // Note: no self-closing divs; keep proper open/close tags.
+      this.innerHTML = `
+        <section class="hero${image ? '' : ' hero--noimage'}" 
+                style="--hero-min-h:${minH}; --hero-position:${position}; --hero-overlay:${overlay};">
+          ${image ? `
+            <div class="hero-media">
+              <div class="hero-image" style="background-image:url('${image}');"></div>
+              <div class="hero-overlay" style="background: ${overlay}"></div>
+            </div>` : ''
+          }
+          <div class="wrap hero-content">
+            <h1 class="lato-regular-italic">${title}</h1>
+            ${subtitle ? `<p class="sub lato-thin">${subtitle}</p>` : ''}
+            <div class="hero-cta">${cta}</div>
+          </div>
+        </section>
+      `;
+    }
+  }
+  customElements.define('py-hero', PYHero);
   // Card
   class PYCard extends HTMLElement{
     connectedCallback(){
