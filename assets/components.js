@@ -57,8 +57,8 @@
       this.innerHTML = `
         <section class="section">
           <div class="wrap">
-            ${title ? `<h2 class="section-title">${title}</h2>` : ''}
-            ${subtitle ? `<p class="section-subtitle">${subtitle}</p>` : ''}
+            ${title ? `<h2 class="section-title lato-light-italic dark-text">${title}</h2>` : ''}
+            ${subtitle ? `<p class="section-subtitle lato-light">${subtitle}</p>` : ''}
             <div class="section-body">${body}</div>
           </div>
         </section>
