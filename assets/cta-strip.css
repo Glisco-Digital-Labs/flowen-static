@@ -1,0 +1,71 @@
+.cta-strip {
+  position: relative;           /* establishes stacking context */
+  isolation: isolate;           /* keeps overlay behind content */
+  min-height: 56vh;
+  display: grid;
+  align-items: center;
+  overflow: hidden;
+  color: #fff;
+  /* padding: clamp(2rem, 6vw, 6rem) clamp(1rem, 4vw, 3rem); */
+  padding: 0;
+}
+
+/* ABSOLUTE media stack so it does NOT push content down */
+.cta-strip-media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;                   /* behind content */
+}
+
+.cta-strip-image,
+.cta-strip-overlay {
+  position: absolute;
+  inset: 0;
+}
+
+.cta-strip-image {
+  background-size: cover;
+  background-position: center 30%;
+  background-repeat: no-repeat;
+  transform: scale(1.02);
+}
+
+.cta-strip-overlay {
+  background: linear-gradient(to bottom, rgba(0,0,0,.55), rgba(0,0,0,.35));
+}
+
+/* Content sits above */
+.cta-strip-content {
+  position: relative;
+  z-index: 1;                   /* above media stack */
+  max-width: 70rem;
+  margin-inline: auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column; /* stack vertically */
+  gap: 2rem; 
+  margin-top: 20% !important;
+}
+
+.cta-strip-content h2 {
+    font-size: clamp(1.6rem, 4.2vw, 2.4rem);
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    margin: 0 0 0.5rem 0;
+    text-shadow: 0 2px 16px rgba(0,0,0,.35);
+}
+
+.cta-strip-content .sub {
+    /* color: var(--muted); */
+    font-size: clamp(1rem, 2.4vw, 2.2rem);
+    margin: 0;
+}
+
+.cta-strip-content .btn {
+    background-color: var(--brand-white);
+    opacity: 0.8;
+    color: var(--brand-primary);
+    border: none;
+    margin: 0 5em;
+    /* font-weight: bold; */
+}

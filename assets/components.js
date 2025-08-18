@@ -54,9 +54,10 @@
     connectedCallback(){
       const title = this.getAttribute('title') || '';
       const subtitle = this.getAttribute('subtitle') || '';
+      const style = this.getAttribute('style') || '';
       const body = this.innerHTML.trim();
       this.innerHTML = `
-        <section class="section">
+        <section class="section ${style}">
           <div class="wrap">
             ${title ? `<h2 class="section-title lato-light-italic dark-text">${title}</h2>` : ''}
             ${subtitle ? `<p class="section-subtitle lato-light">${subtitle}</p>` : ''}
@@ -67,6 +68,37 @@
     }
   }
   customElements.define('py-section', PYSection);
+
+  class PYCtaStrip extends HTMLElement {
+    connectedCallback() {
+      const title = this.getAttribute('title') || '';
+      const subtitle = this.getAttribute('subtitle') || '';
+      const ctaText = this.getAttribute('cta-text') || '';
+      const ctaLink = this.getAttribute('cta-link') || '#';
+      const image = this.getAttribute('image') || ''; // e.g. /assets/cta.jpg
+      const overlay = this.getAttribute('overlay') || 'rgba(0,0,0,.5)'; // e.g. "rgba(0,0,0,.5)" or "linear-gradient(...)"
+      const position = this.getAttribute('position') || 'center 30%'; // CSS background-position
+      const minH = this.getAttribute('min-h') || '52vh'; // optional
+      this.innerHTML = `
+        <section class="cta-strip"
+                style="--cta-strip-min-h:${minH}; --cta-strip-position:${position}; --cta-strip-overlay:${overlay};">
+          ${image ? `
+            <div class="cta-strip-media">
+              <div class="cta-strip-image" style="background-image:url('${image}');"></div>
+              <div class="cta-strip-overlay" style="background: ${overlay}"></div>
+            </div>` : ''
+          }
+          <div class="wrap cta-strip-content">
+            <h2 class="lato-regular-italic">${title}</h2>
+            ${subtitle ? `<p class="sub lato-thin">${subtitle}</p>` : ''}
+            ${ctaText ? `<a class="btn" href="${ctaLink}" aria-label="${ctaText}">${ctaText}</a>` : ''}
+          </div>
+        </section>
+      `;
+      // Log for debugging
+    }
+  }
+  customElements.define('py-cta-strip', PYCtaStrip);
 
   class PYHero extends HTMLElement {
     connectedCallback() {
