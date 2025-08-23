@@ -142,22 +142,23 @@
       const title = this.getAttribute('title') || '';
       const subtitle = this.getAttribute('subtitle') || '';
       const image = this.getAttribute('image') || ''; // optional
-      const style = this.getAttribute('style') || 'ystack'; // one of ['ystack', 'xstack', 'zstack']
+      const style = "card " + (this.getAttribute('style') || 'ystack'); // one of ['ystack', 'xstack', 'zstack']
       const href  = this.getAttribute('href')  || '#';
       const btn   = this.getAttribute('button-label') || 'Ver mais';
       const body  = this.innerHTML.trim();
       this.innerHTML = `
-        <article class="card">
-          ${image ? `<div class="card-image" style="background-image:url('${image}');"></div>` : ''}
-          <div class="card-content ${style}">
+        <article class="${style}">
+          ${image ? `<div class="card-image">
+            <img src="${image}" alt="${title ? title : 'Imagem do card'}" loading="lazy" class="card-image-img"/>
+          </div>` : ''}
+          <div class="card-content">
             ${title ? `<h3>${title}</h3>` : ''}
             ${subtitle ? `<p class="sub">${subtitle}</p>` : ''}
             <div class="card-body">${body}</div>
+            <div class="card-cta">
+              <a class="btn" href="${href}" aria-label="${title ? `Abrir ${title}` : 'Ver mais'}">${btn}</a>
+            </div>
           </div>
-          <div class="card-cta">
-            <a class="btn" href="${href}" aria-label="${title ? `Abrir ${title}` : 'Ver mais'}">${btn}</a>
-          </div>
-          
         </article>
       `;
     }

@@ -4,18 +4,32 @@
   /* border-radius:var(--radius); */
   padding: 0;
   box-shadow:0 1px 12px rgba(0,0,0,.04);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  align-items: flex-start;
+  justify-content: flex-start;
 }
-
-.card h3{margin-top:.2rem;margin-bottom:.4rem;font-size:1.12rem}
 
 .card .card-image {
     height: 300px;
+    width: 100%;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
 }
 
+.card .card-image img {
+    width: 100%;
+    height: inherit;
+    object-fit: cover;
+}
 .card .card-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    align-items: flex-start;
+    justify-content: space-between;
     padding: 1rem 1.1rem;
     text-align: center;
     font-family: "Lato", sans-serif;
@@ -26,17 +40,32 @@
 
 .card .card-content h3 {
   /* font-family: "Lato", sans-serif; */
+  align-self: center;
+  margin-top:.2rem;
+  margin-bottom:.4rem;
+  font-size:1.12rem;
   font-weight: 300;
   font-style: italic;
   font-size: 1.75rem
+
+}
+
+.card .card-content .sub {
+    align-self: center;
+    font-weight: 400;
+}
+
+.card .card-content > *  {
+    margin: 0.5rem 0;
 }
 
 .card .card-cta {
     padding: 1rem 1.1rem;
+    align-self: center;
     text-align: center;
     font-family: "Lato", sans-serif;
     font-weight: 300;
-    font-style: regular;
+    font-style: normal;
     font-size: 1.1rem;
     border: none;
 }
@@ -49,4 +78,64 @@
 .card .card-cta .btn:hover {
     background-color: var(--brand-secondary);
     color: var(--brand-white);
+}
+
+.card.tiny {
+    background: none;
+    display: flex;
+    flex-direction: row;
+    box-shadow: none;
+}
+
+.card.tiny .card-content {
+    padding: 0 1rem 0 0 ;
+    text-align: left;
+    justify-content: center;
+    height: auto;
+}
+
+.card.tiny .card-body {
+    display: none;
+}
+
+.card.tiny .card-cta  {
+    padding: 0;
+    margin-top: 0;
+    align-self: flex-start;
+}
+
+.card.tiny .card-cta a.btn {
+    background: none;
+    color: var(--brand-primary);
+    font-weight: 500;
+    border: none;
+    font-size: 0.9rem;
+    padding: 0;
+}
+
+.card.tiny .card-cta a.btn::after {
+    content: ' →';
+}
+
+.card.tiny .card-image {
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    margin-right: 1rem;
+    flex-shrink: 0;
+}
+
+.card.tiny h3 {
+    font-size: 1.25rem;
+    margin: 0;
+    color: black;
+    font-weight: 400;
+    text-align: left;
+    align-self: flex-start;
+}
+
+.card.tiny .sub {
+    font-size: 1rem;
+    margin: 0;
+    font-weight: 300;
 }

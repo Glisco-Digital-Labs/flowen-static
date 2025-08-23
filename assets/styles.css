@@ -20,7 +20,8 @@
 }
 @media (prefers-color-scheme: dark){
   :root{
-    --bg: #e9e9ea;
+    /* --bg: #e9e9ea; */
+    --bg: ##fff;
     --muted: #a9a9ad;
     --text: #0b0b0c;
     --card: #131316;
@@ -57,12 +58,7 @@ nav.site a:hover{background:rgba(127,127,127,.12)}
 .lead{color:var(--muted)}
 h2{font-size:clamp(1.2rem,3.2vw,1.6rem)}
 /* Grid + Card */
-.grid{
-  display:grid;
-  gap:var(--gap);
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  align-items:start;
-}
+
 .btn{
   display:inline-block; text-decoration:none;
   border:1px solid var(--line);
@@ -71,8 +67,11 @@ h2{font-size:clamp(1.2rem,3.2vw,1.6rem)}
 .btn:hover{filter:brightness(1.05)}
 /* Footer */
 footer.site{
-  border-top:1px solid var(--line);
-  padding:2rem 0; color:var(--muted);
+  /* border-top:1px solid var(--line); */
+  background-color: var(--bg);
+  color: var(--brand-primary);
+  opacity: 0.7;
+  padding:2rem 0; 
 }
 /* Utilities */
 .stack > * + *{margin-top: .8rem;}
