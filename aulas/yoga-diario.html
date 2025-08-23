@@ -1,239 +1,166 @@
-<!DOCTYPE html>
-<html lang="pt-PT">
+<!doctype html>
+<html lang="pt">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Flowen | Ashtanga Sádhana – Yôga Todos os Dias</title>
-  <meta name="description" content="Prática diária de Yôga em Ashtanga Sádhana. Aulas online ao amanhecer (06:00–07:00) e à hora de almoço (12:45–13:45). Adaptações para todos os níveis."/>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Flowen — Sádhana diário</title>
+  <meta name="description" content="Flowen - Aulas diárias de Yoga, de manhã, hora do almoço e fim da tarde."/>
+  <link rel="stylesheet" href="/assets/styles.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='46' fill='%23555'/><text x='50' y='60' font-size='56' text-anchor='middle' fill='white'>ॐ</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+  <script defer src="/assets/components.js"></script>
+  <script defer src="/assets/popup.js"></script>
 </head>
-<body style="font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; line-height:1.6; margin:0; color:#1d1d1f; background:#fff;">
-  <!-- Cabeçalho -->
-  <header style="padding:24px 16px; border-bottom:1px solid #eee; position:sticky; top:0; background:#fff;">
-    <div style="max-width:980px; margin:0 auto; display:flex; align-items:center; justify-content:space-between;">
-      <h1 style="font-size:20px; margin:0;">Flowen · Ashtanga Sádhana</h1>
-      <nav style="font-size:14px;">
-        <a href="#porque" style="margin-right:12px; color:#0a84ff; text-decoration:none;">Porquê</a>
-        <a href="#oque" style="margin-right:12px; color:#0a84ff; text-decoration:none;">O quê</a>
-        <a href="#como" style="margin-right:12px; color:#0a84ff; text-decoration:none;">Como</a>
-        <a href="#ese" style="color:#0a84ff; text-decoration:none;">E se…</a>
-      </nav>
-    </div>
-  </header>
+<body>
+  <py-header title="Flowen Yôga" subtitle="">
+    <a href="/">Início</a>
+    <a href="/cursos/">Cursos</a>
+    <a href="/aulas/">Aulas</a>
+    <a href="/sobre/">Sobre</a>
+    <a href="/contactos/">Contactos</a>
+  </py-header>
 
-  <!-- Introdução / Hero -->
-  <section style="padding:40px 16px; background:#f8fafc;">
-    <div style="max-width:980px; margin:0 auto;">
-      <div style="display:flex; gap:24px; flex-wrap:wrap; align-items:center;">
-        <div style="flex:1 1 420px;">
-          <h2 style="font-size:32px; margin:0 0 12px;">Yôga todos os dias</h2>
-          <p style="font-size:18px; margin:0 0 16px;">
-            Começa as manhãs com energia ou faz uma pausa ao meio-dia para recarregar foco. 
-            Aulas online de <strong>Ashtanga Sádhana</strong>, adaptadas ao teu ritmo.
-          </p>
-          <ul style="padding-left:18px; margin:0 0 20px;">
-            <li><strong>Turma Amanhecer:</strong> 06:00–07:00 (2ª a 6ª)</li>
-            <li><strong>Turma Meio-Dia:</strong> 12:45–13:45 (2ª a 6ª)</li>
-            <li>Formato online, prática regular e progressiva, para todos os níveis</li>
-          </ul>
-          <div>
-            <a href="#como" style="display:inline-block; background:#0a84ff; color:#fff; padding:10px 16px; border-radius:8px; text-decoration:none; font-weight:600; margin-right:8px;">Quero entrar</a>
-            <a href="#oque" style="display:inline-block; border:1px solid #0a84ff; color:#0a84ff; padding:10px 16px; border-radius:8px; text-decoration:none; font-weight:600;">Conhecer a prática</a>
-          </div>
-        </div>
-        <div style="flex:1 1 320px;">
-          <div style="border:1px solid #eee; border-radius:12px; padding:16px;">
-            <h3 style="margin:0 0 8px; font-size:16px;">Horários e Duração</h3>
-            <p style="margin:0 0 8px;">Sessões de 60 minutos, 2ª a 6ª feira.</p>
-            <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px;">
-              <div style="border:1px solid #eee; border-radius:8px; padding:12px;">
-                <div style="font-weight:700;">06:00–07:00</div>
-                <div style="font-size:14px;">Amanhecer</div>
-              </div>
-              <div style="border:1px solid #eee; border-radius:8px; padding:12px;">
-                <div style="font-weight:700;">12:45–13:45</div>
-                <div style="font-size:14px;">Hora de almoço</div>
-              </div>
-            </div>
-            <p style="margin:12px 0 0; font-size:14px; color:#475569;">Participa na turma que preferires — ou alterna conforme o teu dia.</p>
-          </div>
-        </div>
-      </div>
-    </div>
+  <main class="wrap">
+    <section class="" >
+      <py-hero
+        title="Ashtanga Sádhana"
+        subtitle="Começa as manhãs com energia ou faz uma pausa ao meio-dia para recarregar foco. 
+            <strong>Aulas diárias de Yôga online</strong>, adaptadas ao teu ritmo."
+        image="/assets/img/woman-practicing-living-room.jpg"
+        overlay="linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0))" 
+        position="center 25%"
+        min-h="60vh"
+        style="product">
+      </py-hero>
+    </section>
+    <py-section style="stats">
+        <py-grid style="">
+          <py-card
+            title="3x por dia"
+            subtitle="Escolhe entre a turma Amanhecer (6:00-7:00), Meio-dia (12:45-13:45) ou Entardecer (18:00-19:00)."
+            image="/assets/img/number-3x.jpg"
+            style="tiny">
+          </py-card>
+          <py-card
+            title="60 minutos"
+            subtitle="Suficientemente longas para uma prática completa, suficientemente curtas para caber na tua rotina."
+            image="/assets/img/number-60.jpg"
+            href="/sobre/patsy.html"
+            style="tiny">
+          </py-card>
+          <py-card
+            title="8 Angas"
+            subtitle="A prática completa de Ashtanga Sádhana, com pranayama, mantra, asanas e meditação."
+            image="/assets/img/number-8.jpg"
+            href="/sobre/patsy.html"
+            style="tiny">
+          </py-card>
+        </py-grid>
+      </py-section>
+    <section id="porque" style="padding:40px 16px;">
+      <py-section
+        title="Porquê praticar Ashtanga Sádhana diariamente?"
+        subtitle="A prática diária cria <strong>consistência</strong>, melhora a <strong>força e mobilidade</strong>, regula o <strong>sistema nervoso</strong> e clarifica a mente. 
+        Em Ashtanga Sádhana, o corpo, a respiração e a atenção trabalham em conjunto, promovendo <strong>energia estável</strong> e <strong>foco</strong> ao longo do dia.">
+      </py-section>
+      <py-grid style="">
+          <py-card
+            title="Disciplina que liberta"
+            subtitle="Rotinas simples que reduzem a fricção da decisão e aumentam o bem-estar."
+            style="tiny centered">
+          </py-card>
+          <py-card
+            title="Respiração como âncora"
+            subtitle="Pranayama e vinyasa para estabilizar emoções e melhorar a produtividade."
+            style="tiny centered">
+          </py-card>
+          <py-card
+            title="Progressão segura"
+            subtitle="Adaptações para todos os níveis, com orientação técnica e cuidado."
+            style="tiny centered">
+          </py-card>
+        </py-grid>
   </section>
+  <section>
+      <py-cta-strip
+        title="O que é o Ashtanga Sádhana?"
+        subtitle="Uma prática completa que integra corpo, mente e respiração."
+        image="/assets/img/v-sit-position.jpg"
+        overlay="linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0.15), rgba(0,0,0,0.35), rgba(0,0,0,0.55))">
+      </py-cta-strip>
+      <py-section
+        title=""
+        subtitle="“Ashtanga” significa “oito membros”, ou <strong>8 aṅgas</strong>. A prática integra ética, cuidado pessoal, postura, respiração e meditação."
+        style="large">
+      </py-section>
 
-  <!-- PORQUÊ -->
-  <section id="porque" style="padding:40px 16px;">
-    <div style="max-width:980px; margin:0 auto;">
-      <h2 style="font-size:24px; margin:0 0 12px;">Porquê praticar Ashtanga Sádhana diariamente?</h2>
-      <p style="margin:0 0 12px;">
-        A prática diária cria <strong>consistência</strong>, melhora a <strong>força e mobilidade</strong>, regula o <strong>sistema nervoso</strong> e clarifica a mente. 
-        Em Ashtanga Sádhana, o corpo, a respiração e a atenção trabalham em conjunto, promovendo <strong>energia estável</strong> e <strong>foco</strong> ao longo do dia.
-      </p>
-      <ul style="margin:0; padding-left:18px;">
-        <li><strong>Disciplina que liberta:</strong> rotinas simples que reduzem a fricção da decisão e aumentam o bem-estar.</li>
-        <li><strong>Respiração como âncora:</strong> pranayama e vinyasa para estabilizar emoções e melhorar a produtividade.</li>
-        <li><strong>Progressão segura:</strong> adaptações para todos os níveis, com orientação técnica e cuidado.</li>
-      </ul>
-    </div>
-  </section>
 
-  <!-- O QUÊ -->
-  <section id="oque" style="padding:40px 16px; background:#fcfcfd; border-top:1px solid #eee; border-bottom:1px solid #eee;">
-    <div style="max-width:980px; margin:0 auto;">
-      <h2 style="font-size:24px; margin:0 0 20px;">O que é o Ashtanga Sádhana?</h2>
-      <p style="margin:0 0 16px;">
-        “Ashtanga” significa “oito membros”. A prática integra ética, cuidado pessoal, postura, respiração e meditação. 
-        Abaixo, os <strong>8 aṅgas</strong> e como os trabalhamos de forma prática e acessível no dia a dia:
-      </p>
 
       <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:16px;">
-        <div style="border:1px solid #eee; border-radius:10px; padding:14px;">
+        <div style="border-radius:10px; padding:14px;">
           <h3 style="margin:0 0 6px; font-size:16px;">1) Yama (Ética relacional)</h3>
           <p style="margin:0 0 6px; font-size:14px;"><strong>Benefícios:</strong> relações mais claras, menos reatividade.</p>
           <p style="margin:0; font-size:14px;"><strong>Práticas:</strong> ahimsa (não-violência), satya (veracidade), limites saudáveis em sala e fora dela.</p>
+          <div class="popup-trigger">
+            <a href="#popup-aulas" class="btn" data-popup-target="#popup-aulas">Saber mais</a>
+            <py-popup>
+              <p>some test child content</p>
+            </py-popup>
+          </div>
         </div>
 
-        <div style="border:1px solid #eee; border-radius:10px; padding:14px;">
+        <div style="border-radius:10px; padding:14px;">
           <h3 style="margin:0 0 6px; font-size:16px;">2) Niyama (Cuidado pessoal)</h3>
           <p style="margin:0 0 6px; font-size:14px;"><strong>Benefícios:</strong> consistência, autocuidado, clareza de intenção.</p>
           <p style="margin:0; font-size:14px;"><strong>Práticas:</strong> saucha (pureza), tapas (disciplina), svadhyaya (autoestudo), intenção no início de cada aula.</p>
         </div>
 
-        <div style="border:1px solid #eee; border-radius:10px; padding:14px;">
+        <div style="border-radius:10px; padding:14px;">
           <h3 style="margin:0 0 6px; font-size:16px;">3) Āsana (Posturas)</h3>
           <p style="margin:0 0 6px; font-size:14px;"><strong>Benefícios:</strong> força funcional, mobilidade, postura e vitalidade.</p>
           <p style="margin:0; font-size:14px;"><strong>Práticas:</strong> sequências progressivas e adaptadas, trabalho de alinhamento e estabilidade central.</p>
         </div>
 
-        <div style="border:1px solid #eee; border-radius:10px; padding:14px;">
+        <div style="border-radius:10px; padding:14px;">
           <h3 style="margin:0 0 6px; font-size:16px;">4) Prāṇāyāma (Respiração)</h3>
           <p style="margin:0 0 6px; font-size:14px;"><strong>Benefícios:</strong> foco, gestão do stress, energia estável.</p>
           <p style="margin:0; font-size:14px;"><strong>Práticas:</strong> respiração ujjayi suave, contagem respiratória, pausas conscientes entre asanas.</p>
         </div>
 
-        <div style="border:1px solid #eee; border-radius:10px; padding:14px;">
+        <div style="border-radius:10px; padding:14px;">
           <h3 style="margin:0 0 6px; font-size:16px;">5) Pratyāhāra (Interiorização)</h3>
           <p style="margin:0 0 6px; font-size:14px;"><strong>Benefícios:</strong> menos distração, mais presença.</p>
           <p style="margin:0; font-size:14px;"><strong>Práticas:</strong> atenção aos sentidos, silêncio breve após sequências, foco na sensação corporal.</p>
         </div>
 
-        <div style="border:1px solid #eee; border-radius:10px; padding:14px;">
+        <div style="border-radius:10px; padding:14px;">
           <h3 style="margin:0 0 6px; font-size:16px;">6) Dhāraṇā (Concentração)</h3>
           <p style="margin:0 0 6px; font-size:14px;"><strong>Benefícios:</strong> melhoria de foco e produtividade.</p>
           <p style="margin:0; font-size:14px;"><strong>Práticas:</strong> drishtis (pontos de foco), contagem de vinyasas, manutenção da intenção ao longo da aula.</p>
         </div>
 
-        <div style="border:1px solid #eee; border-radius:10px; padding:14px;">
+        <div style="border-radius:10px; padding:14px;">
           <h3 style="margin:0 0 6px; font-size:16px;">7) Dhyāna (Meditação)</h3>
           <p style="margin:0 0 6px; font-size:14px;"><strong>Benefícios:</strong> calma mental, regulação emocional.</p>
           <p style="margin:0; font-size:14px;"><strong>Práticas:</strong> minutos de quietude no final, observação da respiração, presença sem esforço.</p>
         </div>
 
-        <div style="border:1px solid #eee; border-radius:10px; padding:14px;">
+        <div style="border-radius:10px; padding:14px;">
           <h3 style="margin:0 0 6px; font-size:16px;">8) Samādhi (Integração)</h3>
           <p style="margin:0 0 6px; font-size:14px;"><strong>Benefícios:</strong> sensação de plenitude e integração corpo-mente.</p>
           <p style="margin:0; font-size:14px;"><strong>Práticas:</strong> cultivo contínuo; pequenos vislumbres de unidade no pós-prática e no quotidiano.</p>
         </div>
       </div>
-    </div>
-  </section>
 
-  <!-- COMO -->
-  <section id="como" style="padding:40px 16px;">
-    <div style="max-width:980px; margin:0 auto;">
-      <h2 style="font-size:24px; margin:0 0 12px;">Como funciona</h2>
-      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:16px;">
-        <div style="border:1px solid #eee; border-radius:10px; padding:16px;">
-          <h3 style="margin:0 0 6px; font-size:16px;">1) Escolhe a tua turma</h3>
-          <p style="margin:0; font-size:14px;">Amanhecer (06:00) ou Meio-Dia (12:45). Podes alternar conforme a tua agenda.</p>
-        </div>
-        <div style="border:1px solid #eee; border-radius:10px; padding:16px;">
-          <h3 style="margin:0 0 6px; font-size:16px;">2) Liga-te online</h3>
-          <p style="margin:0; font-size:14px;">Recebes o link da plataforma (Zoom ou similar) e entras 5 minutos antes para preparar o espaço.</p>
-        </div>
-        <div style="border:1px solid #eee; border-radius:10px; padding:16px;">
-          <h3 style="margin:0 0 6px; font-size:16px;">3) Prática guiada & adaptada</h3>
-          <p style="margin:0; font-size:14px;">Sequência progressiva com variações para diferentes níveis, respeitando o teu ritmo e objetivo.</p>
-        </div>
-        <div style="border:1px solid #eee; border-radius:10px; padding:16px;">
-          <h3 style="margin:0 0 6px; font-size:16px;">4) Continuidade</h3>
-          <p style="margin:0; font-size:14px;">Plano semanal, notas de prática e pequenos desafios para manter a consistência.</p>
-        </div>
-      </div>
 
-      <div style="margin-top:16px; border:1px solid #eee; border-radius:10px; padding:16px;">
-        <h3 style="margin:0 0 8px; font-size:16px;">O que precisas</h3>
-        <ul style="margin:0; padding-left:18px; font-size:14px;">
-          <li>Tapete de Yôga e, opcionalmente, bloco/strap.</li>
-          <li>Espaço silencioso e câmara posicionada (opcional, mas útil para ajustes verbais).</li>
-          <li>Ligação estável à internet e roupa confortável.</li>
-        </ul>
-      </div>
 
-      <div style="margin-top:16px;">
-        <a href="#ese" style="display:inline-block; background:#0a84ff; color:#fff; padding:10px 16px; border-radius:8px; text-decoration:none; font-weight:600; margin-right:8px;">Perguntas frequentes</a>
-        <a href="#contacto" style="display:inline-block; border:1px solid #0a84ff; color:#0a84ff; padding:10px 16px; border-radius:8px; text-decoration:none; font-weight:600;">Quero ser contactado(a)</a>
-      </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
-  <!-- E SE (FAQ) -->
-  <section id="ese" style="padding:40px 16px; background:#f8fafc;">
-    <div style="max-width:980px; margin:0 auto;">
-      <h2 style="font-size:24px; margin:0 0 12px;">E se… (Perguntas Frequentes)</h2>
-
-      <details style="border:1px solid #eee; border-radius:10px; padding:12px; margin-bottom:10px;">
-        <summary style="cursor:pointer; font-weight:600;">Nunca pratiquei Ashtanga. Posso começar?</summary>
-        <p style="margin:8px 0 0;">Sim. A prática é adaptada a iniciantes, com instruções claras e variações acessíveis.</p>
-      </details>
-
-      <details style="border:1px solid #eee; border-radius:10px; padding:12px; margin-bottom:10px;">
-        <summary style="cursor:pointer; font-weight:600;">Perdi uma sessão. Há reposição?</summary>
-        <p style="margin:8px 0 0;">Podes entrar noutra turma no mesmo dia quando possível, ou receber indicações de prática curta para manter a continuidade.</p>
-      </details>
-
-      <details style="border:1px solid #eee; border-radius:10px; padding:12px; margin-bottom:10px;">
-        <summary style="cursor:pointer; font-weight:600;">Tenho limitações físicas. É seguro?</summary>
-        <p style="margin:8px 0 0;">Sim, trabalhamos com adaptações e progressões. Fala connosco sobre a tua condição para orientarmos com segurança.</p>
-      </details>
-
-      <details style="border:1px solid #eee; border-radius:10px; padding:12px; margin-bottom:10px;">
-        <summary style="cursor:pointer; font-weight:600;">Preciso de câmara ligada?</summary>
-        <p style="margin:8px 0 0;">É opcional. Com a câmara ligada podemos dar ajustes verbais mais personalizados.</p>
-      </details>
-
-      <details style="border:1px solid #eee; border-radius:10px; padding:12px; margin-bottom:10px;">
-        <summary style="cursor:pointer; font-weight:600;">Existe período experimental?</summary>
-        <p style="margin:8px 0 0;">Temos sessões de experiência pontuais. Fala connosco para saber a próxima data.</p>
-      </details>
-
-      <details style="border:1px solid #eee; border-radius:10px; padding:12px; margin-bottom:10px;">
-        <summary style="cursor:pointer; font-weight:600;">Qual é o investimento?</summary>
-        <p style="margin:8px 0 0;">Enviaremos as opções de plano (mensal e pack) e condições atualizadas por contacto direto.</p>
-      </details>
-    </div>
-  </section>
-
-  <!-- Rodapé / Contacto -->
-  <footer id="contacto" style="padding:28px 16px; border-top:1px solid #eee;">
-    <div style="max-width:980px; margin:0 auto;">
-      <h3 style="margin:0 0 8px; font-size:18px;">Queres começar já?</h3>
-      <p style="margin:0 0 12px;">Deixa o teu contacto e horário preferido. Responderemos com os próximos passos e o link de acesso.</p>
-      <form style="display:grid; grid-template-columns:1fr 1fr; gap:10px; max-width:700px;">
-        <input type="text" name="nome" placeholder="Nome" style="padding:10px; border:1px solid #ddd; border-radius:8px;"/>
-        <input type="email" name="email" placeholder="Email" style="padding:10px; border:1px solid #ddd; border-radius:8px;"/>
-        <select name="turma" style="padding:10px; border:1px solid #ddd; border-radius:8px;">
-          <option value="">Turma preferida</option>
-          <option value="0600">06:00–07:00 (Amanhecer)</option>
-          <option value="1245">12:45–13:45 (Meio-Dia)</option>
-          <option value="indiferente">Indiferente / Alterno</option>
-        </select>
-        <input type="tel" name="telefone" placeholder="Telefone (opcional)" style="padding:10px; border:1px solid #ddd; border-radius:8px;"/>
-        <textarea name="mensagem" placeholder="Partilha objetivos ou restrições (opcional)" style="grid-column:1/-1; padding:10px; border:1px solid #ddd; border-radius:8px; min-height:90px;"></textarea>
-        <button type="submit" style="grid-column:1/-1; background:#0a84ff; color:#fff; padding:12px 16px; border:0; border-radius:10px; font-weight:700; cursor:pointer;">Quero praticar</button>
-      </form>
-      <p style="margin:16px 0 0; font-size:12px; color:#64748b;">© Flowen. Prática consciente, progresso sustentável.</p>
-    </div>
-  </footer>
+  <py-footer>
+    © <span data-year></span> Flowen Yôga • Do nascimento ao renascimento
+  </py-footer>
 </body>
 </html>

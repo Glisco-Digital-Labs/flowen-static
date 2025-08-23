@@ -37,3 +37,11 @@ section.brand-white-bg {
 .section.tight {
   padding: 0 4rem;
 }
+
+.section.stats {
+  padding: 1rem 0;
+}
+
+.section.large .section-subtitle {
+  font-size: clamp(1.2rem, 2.5vw, 3rem);
+}

@@ -139,3 +139,9 @@
     margin: 0;
     font-weight: 300;
 }
+
+.card.centered .card-content, 
+.card.centered .card-content h3 {
+    text-align: center;
+    align-self: center;
+}

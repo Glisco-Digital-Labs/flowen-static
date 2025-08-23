@@ -1,0 +1,77 @@
+/* ===== Popup (Flowen) ===== */
+:root{
+  --popup-bg: #111;           /* ajusta ao teu tema */
+  --popup-fg: #fff;
+  --popup-radius: 16px;
+  --popup-shadow: 0 24px 60px rgba(0,0,0,.45);
+  --popup-border: 1px solid rgba(255,255,255,.08);
+}
+
+.popup-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.6);
+  display: none;              /* controlado por .is-open */
+  align-items: center;
+  justify-content: center;
+  padding: 4vh 2vw;
+  z-index: 9999;
+}
+
+.popup-overlay.is-open { display: flex; }
+
+.popup-modal {
+  position: relative;
+  width: min(76vw, 1100px);
+  max-height: 88vh;
+  background: var(--popup-bg);
+  color: var(--popup-fg);
+  border-radius: var(--popup-radius);
+  border: var(--popup-border);
+  box-shadow: var(--popup-shadow);
+  overflow: hidden;           /* header fixo, conteúdo scrolla */
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header fixo */
+.popup-header {
+  padding: 16px 56px 16px 20px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-bottom: 1px solid rgba(255,255,255,.06);
+}
+
+/* Conteúdo scrollável */
+.popup-content {
+  padding: 20px;
+  overflow: auto;
+}
+
+/* Botão fechar (X) */
+.popup-close {
+  position: absolute;
+  top: 10px; right: 10px;
+  width: 36px; height: 36px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.06);
+  color: inherit;
+  display: grid; place-items: center;
+  cursor: pointer;
+}
+.popup-close:hover { background: rgba(255,255,255,.12); }
+.popup-close:focus-visible {
+  outline: 2px solid #7aa2ff; outline-offset: 2px;
+}
+
+/* Animações leves */
+@media (prefers-reduced-motion: no-preference) {
+  .popup-overlay.is-open { animation: fadeIn .18s ease-out; }
+  .popup-modal { animation: riseIn .18s ease-out; }
+}
+@keyframes fadeIn { from { opacity: 0 } to { opacity: 1 } }
+@keyframes riseIn { from { transform: translateY(8px); opacity: .96 } to { transform: translateY(0); opacity: 1 } }
+
+/* Bloqueio de scroll de fundo quando aberto */
+html.popup-lock, body.popup-lock { overflow: hidden; }

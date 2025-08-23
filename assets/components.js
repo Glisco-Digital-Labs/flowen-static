@@ -107,6 +107,7 @@
       const ctaText   = this.getAttribute('cta-text') || '';
       const ctaLink   = this.getAttribute('cta-link') || '#';
       const image     = this.getAttribute('image') || '';                 // e.g. /assets/hero.jpg
+      const style     = "hero " + (this.getAttribute('style') || '');    
       const overlay   = this.getAttribute('overlay')                      // e.g. "rgba(0,0,0,.5)" or "linear-gradient(...)"
                         || 'linear-gradient(to bottom, rgba(0,0,0,.55), rgba(0,0,0,.35))';
       const position  = this.getAttribute('position') || 'center 30%';    // CSS background-position
@@ -118,11 +119,13 @@
       console.log('Hero component:', this.getAttribute('overlay') ? 'with overlay' : 'no overlay');
       // Note: no self-closing divs; keep proper open/close tags.
       this.innerHTML = `
-        <section class="hero${image ? '' : ' hero--noimage'}" 
+        <section class="${style} ${image ? '' : ' hero--noimage'}" 
                 style="--hero-min-h:${minH}; --hero-position:${position}; --hero-overlay:${overlay};">
           ${image ? `
             <div class="hero-media">
-              <div class="hero-image" style="background-image:url('${image}');"></div>
+              <div class="hero-image" "> 
+                <img src="${image}" alt="${title ? title : 'Imagem do herói'}" loading="lazy" class="hero-image-img"/>
+              </div>
               <div class="hero-overlay" style="background: ${overlay}"></div>
             </div>` : ''
           }
@@ -143,9 +146,12 @@
       const subtitle = this.getAttribute('subtitle') || '';
       const image = this.getAttribute('image') || ''; // optional
       const style = "card " + (this.getAttribute('style') || 'ystack'); // one of ['ystack', 'xstack', 'zstack']
-      const href  = this.getAttribute('href')  || '#';
+      const href  = this.getAttribute('href')  || null;
       const btn   = this.getAttribute('button-label') || 'Ver mais';
       const body  = this.innerHTML.trim();
+      const linkAndCta = href ? `<div class="card-cta">
+              <a class="btn" href="${href}" aria-label="${title ? `Abrir ${title}` : 'Ver mais'}">${btn}</a>
+            </div>` : "";
       this.innerHTML = `
         <article class="${style}">
           ${image ? `<div class="card-image">
@@ -155,13 +161,39 @@
             ${title ? `<h3>${title}</h3>` : ''}
             ${subtitle ? `<p class="sub">${subtitle}</p>` : ''}
             <div class="card-body">${body}</div>
-            <div class="card-cta">
-              <a class="btn" href="${href}" aria-label="${title ? `Abrir ${title}` : 'Ver mais'}">${btn}</a>
-            </div>
+            ${linkAndCta}
           </div>
         </article>
       `;
     }
   }
   customElements.define('py-card', PYCard);
+
+  class PYPopUp extends HTMLElement {
+    connectedCallback() {
+      const title = this.getAttribute('title') || '';
+      const subtitle = this.getAttribute('subtitle') || '';
+      const image = this.getAttribute('image') || ''; // e.g. /assets/cta.jpg
+      const overlay = this.getAttribute('overlay') || 'rgba(0,0,0,.5)'; // e.g. "rgba(0,0,0,.5)" or "linear-gradient(...)"
+      const body = this.innerHTML.trim();
+      this.innerHTML = `
+        <section class="popup" id="${this.id || 'popup'}" aria-hidden="true">
+          <div class="popup-overlay" aria-hidden="true">
+            <section id="popup-aulas" class="popup-modal" tabindex="-1">
+              <header class="popup-header">
+                Aulas Flowen — Detalhes
+                <button class="popup-close" type="button" aria-label="Fechar" data-popup-close>✕</button>
+              </header>
+              <div class="popup-content">
+                <!-- conteúdo rico aqui: cards, listas, imagens, etc. -->
+                <div>${body}</div>
+              </div>
+            </section>
+          </div>
+        </section>
+      `;
+      // Log for debugging
+    }
+  }
+  customElements.define('py-popup', PYPopUp);
 })();

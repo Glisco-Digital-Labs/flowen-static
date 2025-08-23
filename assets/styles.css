@@ -4,6 +4,7 @@
 @import url("section.css");
 @import url("card.css");
 @import url("cta-strip.css");
+@import url("popup.css");
 /* Minimal, modern styles for Flowen Yoga */
 :root{
   --maxw: 1100px;
