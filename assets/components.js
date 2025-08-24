@@ -3,6 +3,8 @@
   // Header
   class PYHeader extends HTMLElement{
     connectedCallback(){
+      if (this.dataset.upgraded === '1') return; // <-- guard
+      this.dataset.upgraded = '1';
       const title = this.getAttribute('title') || '';
       const subtitle = this.getAttribute('subtitle') || '';
       const nav = this.innerHTML; // light DOM links
@@ -26,6 +28,8 @@
   // Footer
   class PYFooter extends HTMLElement{
     connectedCallback(){
+      if (this.dataset.upgraded === '1') return; // <-- guard
+      this.dataset.upgraded = '1';
       const content = this.innerHTML || '';
       this.innerHTML = `
         <footer class="site" role="contentinfo">
@@ -42,6 +46,8 @@
   // Grid
   class PYGrid extends HTMLElement{
     connectedCallback(){
+      if (this.dataset.upgraded === '1') return; // <-- guard
+      this.dataset.upgraded = '1';
       const style = this.getAttribute('style') || '';
       const body = this.innerHTML;
       this.innerHTML = `<div class="grid ${style}">${body}</div>`;
@@ -52,6 +58,9 @@
   // Section
   class PYSection extends HTMLElement{
     connectedCallback(){
+      if (this.dataset.upgraded === '1') return; // <-- guard
+      this.dataset.upgraded = '1';
+
       const title = this.getAttribute('title') || '';
       const subtitle = this.getAttribute('subtitle') || '';
       const style = this.getAttribute('style') || '';
@@ -71,6 +80,9 @@
 
   class PYCtaStrip extends HTMLElement {
     connectedCallback() {
+      if (this.dataset.upgraded === '1') return; // <-- guard
+      this.dataset.upgraded = '1';
+
       const title = this.getAttribute('title') || '';
       const subtitle = this.getAttribute('subtitle') || '';
       const ctaText = this.getAttribute('cta-text') || '';
@@ -142,6 +154,9 @@
   // Card
   class PYCard extends HTMLElement{
     connectedCallback(){
+      if (this.dataset.upgraded === '1') return; // <-- guard
+      this.dataset.upgraded = '1';
+
       const title = this.getAttribute('title') || '';
       const subtitle = this.getAttribute('subtitle') || '';
       const image = this.getAttribute('image') || ''; // optional
@@ -171,21 +186,21 @@
 
   class PYPopUp extends HTMLElement {
     connectedCallback() {
-      const title = this.getAttribute('title') || '';
-      const subtitle = this.getAttribute('subtitle') || '';
-      const image = this.getAttribute('image') || ''; // e.g. /assets/cta.jpg
-      const overlay = this.getAttribute('overlay') || 'rgba(0,0,0,.5)'; // e.g. "rgba(0,0,0,.5)" or "linear-gradient(...)"
+      if (this.dataset.upgraded === '1') return; // <-- guard
+      this.dataset.upgraded = '1';
+
+      const popupId = this.getAttribute('popup-id') || 'unidentified-popup';
+      const title = this.getAttribute('title') || 'Flowen — Detalhes';
       const body = this.innerHTML.trim();
       this.innerHTML = `
         <section class="popup" id="${this.id || 'popup'}" aria-hidden="true">
           <div class="popup-overlay" aria-hidden="true">
-            <section id="popup-aulas" class="popup-modal" tabindex="-1">
+            <section id="${popupId}" class="popup-modal" tabindex="-1">
               <header class="popup-header">
-                Aulas Flowen — Detalhes
+                ${title }
                 <button class="popup-close" type="button" aria-label="Fechar" data-popup-close>✕</button>
               </header>
               <div class="popup-content">
-                <!-- conteúdo rico aqui: cards, listas, imagens, etc. -->
                 <div>${body}</div>
               </div>
             </section>

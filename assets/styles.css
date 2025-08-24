@@ -78,3 +78,7 @@ footer.site{
 .stack > * + *{margin-top: .8rem;}
 section > h2{margin-top:0.6rem}
 
+.left-align{text-align:left;}
+.right-align{text-align:right;}
+.center{text-align:center;}
+.black-text{color:black;}
