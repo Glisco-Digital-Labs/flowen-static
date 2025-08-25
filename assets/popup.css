@@ -77,6 +77,20 @@
     margin-top: 0;
 }
 
+.popup .section.large .section-subtitle {
+    font-size: clamp(1.2rem, 2vw, 3rem);
+}
+
+.popup .card.centered .card-content {
+    width: 100%;
+    align-self: flex-start;
+}
+.popup .card.tiny .card-content h3 {
+    width: 100%;
+    align-self: center;
+    margin-bottom: 0.5rem
+}
+
 /* Animações leves */
 @media (prefers-reduced-motion: no-preference) {
   .popup-overlay.is-open { animation: fadeIn .18s ease-out; }
