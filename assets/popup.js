@@ -90,10 +90,41 @@
   // Delegação: abrir por data-popup-target
   document.addEventListener('click', (e) => {
     const trigger = e.target.closest('[data-popup-target]');
+    const fromModal = e.target.closest('.popup-modal');
+    const goto = e.target.closest('[data-popup-goto]');
+
+    if (goto) {
+      const target = document.querySelector(goto.dataset.popupTarget);
+      const popup = e.target.closest('.popup-modal'); 
+      closePopup(popup);
+      if (target) {
+        // smooth scroll; if you want instant: behavior:'auto'
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+        // optional: move focus for a11y
+        if (typeof target.tabIndex !== 'number' || target.tabIndex < 0) {
+          target.tabIndex = -1; // make focusable without altering visuals
+        }
+        setTimeout(() => target.focus({ preventScroll: true }), 350);
+      }
+      return;
+    }
+
     if (trigger) {
       e.preventDefault();
       const sel = trigger.getAttribute('data-popup-target');
-      openPopup(sel);
+      // Close current, then open target, preserving overlay feel
+      // Small rAF dance to avoid focus race conditions
+      if (fromModal) {
+        const popup = e.target.closest('.popup-modal');
+        closePopup(popup);
+        requestAnimationFrame(() => {
+          openPopup(sel);
+        });
+      } else {
+        openPopup(sel);
+      } 
+      
     }
     const closer = e.target.closest('[data-popup-close]');
     if (closer) {
@@ -102,6 +133,59 @@
       closePopup(popup);
     }
   });
+
+  // --- Add-on: Navigate to another popup from within a popup ---
+// Supports: <button data-popup-open="#popup-target">
+// document.addEventListener('click', (e) => {
+//   const nav = e.target.closest('[data-popup-open]');
+//   if (!nav) return;
+//   e.preventDefault();
+
+//   const toSel = nav.getAttribute('data-popup-target');
+//   const toExists = document.querySelector(toSel);
+  
+//   console.log(`data-popup-open clicked on. nav`, nav, );
+//   console.log(`data-popup-open clicked on. toSel`, toSel);
+//   console.log(`data-popup-open clicked on. fromModal`, fromModal);
+//   console.log(`data-popup-open clicked on. toExists`, toExists);
+
+//   if (!toExists) return;
+
+//   // Close current, then open target, preserving overlay feel
+//   // Small rAF dance to avoid focus race conditions
+//   if (fromModal) {
+//     window.Popup.close(fromModal);
+//     requestAnimationFrame(() => requestAnimationFrame(() => window.Popup.open(toSel)));
+//   } else {
+//     window.Popup.open(toSel);
+//   }
+// });
+
+// --- Add-on: CTA that closes popup and scrolls to a target ---
+// Supports: <a data-popup-goto="#book-now">
+// document.addEventListener('click', (e) => {
+//   const goto = e.target.closest('[data-popup-goto]');
+//   if (!goto) return;
+//   e.preventDefault();
+
+//   const selector = goto.getAttribute('data-popup-goto');
+//   const target = document.querySelector(selector);
+
+//   const current = e.target.closest('.popup-modal');
+//   if (current) window.Popup.close(current);
+
+//   if (target) {
+//     // smooth scroll; if you want instant: behavior:'auto'
+//     target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+//     // optional: move focus for a11y
+//     if (typeof target.tabIndex !== 'number' || target.tabIndex < 0) {
+//       target.tabIndex = -1; // make focusable without altering visuals
+//     }
+//     setTimeout(() => target.focus({ preventScroll: true }), 350);
+//   }
+// });
+
 
   // Expor API global opcional
   window.Popup = { open: openPopup, close: closePopup };

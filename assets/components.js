@@ -192,6 +192,12 @@
       const popupId = this.getAttribute('popup-id') || 'unidentified-popup';
       const title = this.getAttribute('title') || 'Flowen — Detalhes';
       const body = this.innerHTML.trim();
+      const previous = this.getAttribute('previous') || '';
+      const previousDataVar = this.getAttribute('previous') ? "data-popup-target" : 'data-no-link';
+      const previousButtonClass = this.getAttribute('previous') ? "enabled" : 'disabled';
+      const nextButtonClass = this.getAttribute('previous') ? "enabled" : 'disabled';
+      const next = this.getAttribute('next') || '';
+      const nextsDataVar = this.getAttribute('next') ? "data-popup-target" : 'data-no-link';
       this.innerHTML = `
         <section class="popup" id="${this.id || 'popup'}" aria-hidden="true">
           <div class="popup-overlay" aria-hidden="true">
@@ -202,6 +208,15 @@
               </header>
               <div class="popup-content">
                 <div>${body}</div>
+              </div>
+              <div class="popup-actions">
+                <!-- Next/Prev inside the popup -->
+                <button class="btn previous ${previousButtonClass}" ${previousDataVar}="#${previous}">Anga Anterior</button>
+                <!-- CTA that closes the popup and scrolls to #book-now -->
+                <a href="#book-now" class="btn primary" data-popup-goto="#book-now">Reservar agora</a>
+
+                <button class="btn next ${nextButtonClass}" ${nextsDataVar}="#${next}">Próximo Anga</button>
+
               </div>
             </section>
           </div>

@@ -85,10 +85,53 @@
     width: 100%;
     align-self: flex-start;
 }
+
 .popup .card.tiny .card-content h3 {
     width: 100%;
     align-self: center;
-    margin-bottom: 0.5rem
+    margin-bottom: 0.5rem;
+}
+
+.popup-actions {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  background-color: var(--brand-secondary);
+  /* background-color: var(--brand-primary); */
+}
+
+.popup .popup-actions .btn {
+  background: transparent;
+  color: var(--brand-white);
+  border: none;
+}
+
+.popup .popup-actions .btn.primary {
+  cursor: pointer;
+  background-color: var(--brand-white);
+  color: black;
+  padding: 0.25rem 1rem;
+  margin: 0.5rem;
+}
+
+.popup .popup-actions .btn:hover {
+  cursor: pointer;
+}
+
+.popup .popup-actions .btn.previous::before {
+  content: "\2190";
+  margin-right: 0.5rem;
+}
+
+.popup .popup-actions .btn.next::after {
+  content: "\2192";
+  margin-left: 0.5rem;
+  
+}
+
+.popup .popup-actions .btn.disabled {
+  background-color: var(--muted);
 }
 
 /* Animações leves */

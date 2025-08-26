@@ -105,7 +105,7 @@
           <p style="margin:0; font-size:14px;"><strong>Práticas:</strong> ahimsa (não-violência), satya (veracidade), limites saudáveis em sala e fora dela.</p>
           <div class="popup-trigger">
             <a href="#popup-aulas" class="btn" data-popup-target="#popup-mudra">Saber mais</a>
-            <py-popup popup-id="popup-mudra" title="1º Anga - Mudrá: Detalhes">
+            <py-popup popup-id="popup-mudra" title="1º Anga - Mudrá: Detalhes" next="popup-puja">
               <py-hero 
                 title="1º Anga - Mudrá"
                 subtitle="A Chave de Entrada da Prática"
@@ -171,7 +171,7 @@
           <p style="margin:0; font-size:14px;"><strong>Práticas:</strong> saucha (pureza), tapas (disciplina), svadhyaya (autoestudo), intenção no início de cada aula.</p>
           <div class="popup-trigger">
             <a href="#popup-puja" class="btn" data-popup-target="#popup-puja">Saber mais</a>
-            <py-popup popup-id="popup-puja" title="2º Anga - Pújá: Detalhes">
+            <py-popup popup-id="popup-puja" title="2º Anga - Pújá: Detalhes" previous="popup-mudra" next="popup-mantra">
               <py-hero 
                 title="2º Anga - Pújá"
                 subtitle="Retribuição Ética de Energia"
@@ -237,7 +237,7 @@
           <p style="margin:0; font-size:14px;"><strong>Práticas:</strong> sequências progressivas e adaptadas, trabalho de alinhamento e estabilidade central.</p>
           <div class="popup-trigger">
             <a href="#popup-mantra" class="btn" data-popup-target="#popup-mantra">Saber mais</a>
-            <py-popup popup-id="popup-mantra" title="3º Anga - Mantra: Detalhes">
+            <py-popup popup-id="popup-mantra" title="3º Anga - Mantra: Detalhes" previous="popup-puja" next="popup-pranayama">
               <py-hero 
                 title="3º Anga - Mantra"
                 subtitle="A Ciência do Som e do Silêncio"
@@ -347,7 +347,7 @@
           <p style="margin:0; font-size:14px;"><strong>Práticas:</strong> respiração ujjayi suave, contagem respiratória, pausas conscientes entre asanas.</p>
           <div class="popup-trigger">
             <a href="#popup-pranayama" class="btn" data-popup-target="#popup-pranayama">Saber mais</a>
-            <py-popup popup-id="popup-pranayama" title="4º Anga - Pranayama: Detalhes">
+            <py-popup popup-id="popup-pranayama" title="4º Anga - Pranayama: Detalhes" previous="popup-mantra" next="popup-kryia">
               <py-hero 
                 title="4º Anga - Pranayama"
                 subtitle="A Ponte entre Corpo e Mente"
@@ -453,7 +453,7 @@
           <p style="margin:0; font-size:14px;"><strong>Práticas:</strong> atenção aos sentidos, silêncio breve após sequências, foco na sensação corporal.</p>
           <div class="popup-trigger">
             <a href="#popup-kryia" class="btn" data-popup-target="#popup-kryia">Saber mais</a>
-            <py-popup popup-id="popup-kryia" title="5º Anga - Kryia: Detalhes">
+            <py-popup popup-id="popup-kryia" title="5º Anga - Kryia: Detalhes" previous="popup-pranayama" next="popup-asana">
               <py-hero 
                 title="5º Anga - Kryia"
                 subtitle="A Arte da Purificação"
@@ -542,7 +542,7 @@
           <p style="margin:0; font-size:14px;"><strong>Práticas:</strong> drishtis (pontos de foco), contagem de vinyasas, manutenção da intenção ao longo da aula.</p>
           <div class="popup-trigger">
             <a href="#popup-asana" class="btn" data-popup-target="#popup-asana">Saber mais</a>
-            <py-popup popup-id="popup-asana" title="6º Anga - Asana: Detalhes">
+            <py-popup popup-id="popup-asana" title="6º Anga - Asana: Detalhes" previous="popup-kryia" next="popup-yoganidra">
               <py-hero 
                 title="6º Anga - Asana"
                 subtitle="Técnica orgânica: firme e agradável"
@@ -692,7 +692,7 @@
           <p style="margin:0; font-size:14px;"><strong>Práticas:</strong> minutos de quietude no final, observação da respiração, presença sem esforço.</p>
           <div class="popup-trigger">
             <a href="#popup-yoganidra" class="btn" data-popup-target="#popup-yoganidra">Saber mais</a>
-            <py-popup popup-id="popup-yoganidra" title="7º Anga - Yoganidra: Detalhes">
+            <py-popup popup-id="popup-yoganidra" title="7º Anga - Yoganidra: Detalhes" previous="popup-asana" next="popup-samyama">
               <py-hero 
                 title="7º Anga - Yoganidra"
                 subtitle="Repouso consciente, presença profunda"
@@ -812,14 +812,136 @@
         </div>
 
         <div style="border-radius:10px; padding:14px;">
-          <h3 style="margin:0 0 6px; font-size:16px;">8) Samādhi (Integração)</h3>
+          <h3 style="margin:0 0 6px; font-size:16px;">8) Samyama</h3>
           <p style="margin:0 0 6px; font-size:14px;"><strong>Benefícios:</strong> sensação de plenitude e integração corpo-mente.</p>
           <p style="margin:0; font-size:14px;"><strong>Práticas:</strong> cultivo contínuo; pequenos vislumbres de unidade no pós-prática e no quotidiano.</p>
+          <div class="popup-trigger">
+            <a href="#popup-samyama" class="btn" data-popup-target="#popup-samyama">Saber mais</a>
+            <py-popup popup-id="popup-samyama" title="8º Anga - Samyama: Detalhes" previous="popup-yoganidra">
+              <py-hero 
+                title="8º Anga - Samyama"
+                subtitle="Síntese de atenção, meditação e absorção"
+                image="/assets/img/samyama.jpg"
+                overlay="linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0.45))" 
+                position="center 25%"
+                style="popup">
+              </py-hero>
+              <!-- <div class="wrap"> -->
+              <py-section
+                title=""
+                subtitle="<strong>Samyama</strong> é a prática avançada que integra Dharana (concentração), Dhyana (meditação) e Samadhi (absorção) sobre um mesmo objeto — uma síntese que aprofunda a clareza e o autoconhecimento"
+                style="large popup">
+              </py-section>
+              <py-section title="Benefícios e suporte científico" subtitle="O caminho para um discernimento profundo e transformação interior." style="large popup">
+                <py-grid style="">
+                  <py-card
+                    title="Mais serenidade e bem-estar emocional"
+                    subtitle="Ensaios clínicos aleatorizados [<a href='https://pubmed.ncbi.nlm.nih.gov/25686304/' target='new'>1</a>, <a href='https://time.com/3709717/mindful-meditation-sleep/' target='new'>2</a>] evidenciaram melhorias da qualidade do sono e do funcionamento diurno em adultos mais velhos com perturbações do sono."
+                    style="tiny centered">
+                  </py-card>
+                  <py-card
+                    title="Atenção e foco sustentado"
+                    subtitle="Apenas cinco dias de treino meditativo <a href='https://www.pnas.org/doi/10.1073/pnas.0707678104' target='new'>mostraram</a> melhor controlo atencional e regulação do stress ."
+                    style="tiny centered">
+                  </py-card>
+                  <py-card
+                    title="Neuroplasticidade e regulação emocional"
+                    subtitle="Estudos de neuroimagem <a href='https://pubmed.ncbi.nlm.nih.gov/21071182/' target='new'>ligam</a> a prática à aumento de matéria cinzenta em regiões de memória e regulação emocional."
+                    style="tiny centered">
+                  </py-card>
+                  <py-card
+                    title="Alívio da dor com mecanismos próprios"
+                    subtitle="A meditação <a href='https://www.jneurosci.org/content/35/46/15307' target='new'>produz analgesia superior</a> e mecanismos neurais distintos de placebo e “sham” ."
+                    style="tiny centered">
+                  </py-card>
+                  <py-card
+                    title="Coração mais sereno (HRV/Vagalidade)"
+                    subtitle="Revisão abrangente <a href='https://pubmed.ncbi.nlm.nih.gov/27512317/' target='new'>indica</a> aumento de variabilidade da frequência cardíaca e predomínio parassimpático associados a práticas de meditação."
+                    style="tiny centered">
+                  </py-card>
+                </py-grid>
+                
+              </py-section>
+              <py-section title="Como praticamos" subtitle="Assenta o corpo, suaviza a respiração e segue o foco: da atenção contínua nasce o repouso consciente." style="large popup">
+                <py-grid style="airy">
+                  <py-card
+                    title="Postura"
+                    subtitle="Sentado em posição de lotus, postura estável, coluna ereta, respiração suave"
+                    style="tiny centered">
+                  </py-card>
+                  <py-card
+                    title="Dharana (concentração)"
+                    subtitle="Escolhe um foco (respiração, mantra, imagem interna) e fixa a atenção."
+                    style="tiny centered">
+                  </py-card>
+  
+                </py-grid>
+                <py-grid>
+                  <py-card
+                    title="Samadhi (absorção)"
+                    subtitle="Sujeito e objeto tornam-se não-separados; repouso lúcido e silêncio consciente. "
+                    style="tiny centered">
+                  </py-card>
+                  <py-card
+                    title="Fecho"
+                    subtitle="Regressa devagar e formula uma intenção prática para o dia"
+                    style="tiny centered">
+                  </py-card>
+                </py-grid>
+                
+              </py-section>
+
+              <py-section title="Atitude correta" subtitle="Mais do que técnica, uma disposição interior" style="large popup">
+                <!-- <div class="black-text">Cabe ao <strong>instrutor experiente</strong> escolher a técnica mais adequada para cada aluno e para cada aula, de acordo com os objetivos e o momento de cada praticante.</div> -->
+                 <py-grid style="">
+                  <py-card
+                    title="Paciência e regularidade"
+                    subtitle="Profundidade vem com o tempo; consistência > intensidade. "
+                    style="tiny centered">
+                  </py-card>
+                  <py-card
+                    title="Curiosidade serena"
+                    subtitle="Observa sem julgar; deixa a prática revelar o que já está presente. "
+                    style="tiny centered">
+                  </py-card>
+                  <py-card
+                    title="Humildade"
+                    subtitle="Evita expectativas grandiosas; acolhe cada sessão como ela é."
+                    style="tiny centered">
+                  </py-card>
+                </py-grid>
+              </py-section>
+                <py-section title="Orientação e limites" subtitle="Prática segura, mente respeitada" style="large popup">
+                <!-- <div class="black-text">Cabe ao <strong>instrutor experiente</strong> escolher a técnica mais adequada para cada aluno e para cada aula, de acordo com os objetivos e o momento de cada praticante.</div> -->
+                 <py-grid style="airy">
+                  <py-card
+                    title="Procura orientação"
+                    subtitle="Começa com orientação de instrutor experiente, sobretudo em práticas prolongadas/intensivas. "
+                    style="tiny centered">
+                  </py-card>
+                  <py-card
+                    title="Adapta o ambiente"
+                    subtitle="Adapta o contexto (ambiente, duração, frequência) ao teu estado físico/mental. "
+                    style="tiny centered">
+                  </py-card>
+                </py-grid>
+              </py-section>
+
+              <py-section title="Inspiração Final" subtitle="Samyama é o silêncio que vê: atenção reunida, mente repousada, coração lúcido." style="large popup">
+              </py-section>
+            <!-- </div> -->
+            </py-popup>
+          </div>
         </div>
       </div>
 
 
 
+    </section>
+    <section>
+      <div id="book-now">
+        <h2>BUY NOW</h2>
+      </div>
     </section>
   </main>
 
