@@ -184,32 +184,82 @@
   }
   customElements.define('py-card', PYCard);
 
+  // class PYPopUp extends HTMLElement {
+  //   connectedCallback() {
+  //     if (this.dataset.upgraded === '1') return; // <-- guard
+  //     this.dataset.upgraded = '1';
+
+  //     const popupId = this.getAttribute('popup-id') || 'unidentified-popup';
+  //     const title = this.getAttribute('title') || 'Flowen — Detalhes';
+  //     const body = this.innerHTML.trim();
+  //     const previous = this.getAttribute('previous') || '';
+  //     const previousDataVar = this.getAttribute('previous') ? "data-popup-target" : 'data-no-link';
+  //     const previousButtonClass = this.getAttribute('previous') ? "enabled" : 'disabled';
+  //     const nextButtonClass = this.getAttribute('previous') ? "enabled" : 'disabled';
+  //     const next = this.getAttribute('next') || '';
+  //     const nextsDataVar = this.getAttribute('next') ? "data-popup-target" : 'data-no-link';
+  //     this.innerHTML = `
+  //       <section class="popup" id="${this.id || 'popup'}" aria-hidden="true">
+  //         <div class="popup-overlay" aria-hidden="true">
+  //           <section id="${popupId}" class="popup-modal" tabindex="-1">
+  //             <header class="popup-header">
+  //               ${title }
+  //               <button class="popup-close" type="button" aria-label="Fechar" data-popup-close>✕</button>
+  //             </header>
+  //             <div class="popup-content">
+  //               <div>${body}</div>
+  //             </div>
+  //             <div class="popup-actions">
+  //               <!-- Next/Prev inside the popup -->
+  //               <button class="btn previous ${previousButtonClass}" ${previousDataVar}="#${previous}">Anga Anterior</button>
+  //               <!-- CTA that closes the popup and scrolls to #book-now -->
+  //               <a href="#book-now" class="btn primary" data-popup-goto="#book-now">Reservar agora</a>
+
+  //               <button class="btn next ${nextButtonClass}" ${nextsDataVar}="#${next}">Próximo Anga</button>
+
+  //             </div>
+  //           </section>
+  //         </div>
+  //       </section>
+  //     `;
+  //     // Log for debugging
+  //   }
+  // }
+  // customElements.define('py-popup', PYPopUp);
+  // py-popup.js (wrapper → template provider)
   class PYPopUp extends HTMLElement {
     connectedCallback() {
-      if (this.dataset.upgraded === '1') return; // <-- guard
+      if (this.dataset.upgraded === '1') return;
       this.dataset.upgraded = '1';
 
-      const popupId = this.getAttribute('popup-id') || 'unidentified-popup';
+      const id = this.getAttribute('popup-id') || this.id || `popup-${Math.random().toString(36).slice(2)}`;
+      // const popupId = this.getAttribute('popup-id') || 'unidentified-popup';
       const title = this.getAttribute('title') || 'Flowen — Detalhes';
-      const body = this.innerHTML.trim();
+      // const body = this.innerHTML.trim();
       const previous = this.getAttribute('previous') || '';
-      const previousDataVar = this.getAttribute('previous') ? "data-popup-target" : 'data-no-link';
+      const previousDataVar = this.getAttribute('previous') ? "data-popup-open" : 'data-no-link';
       const previousButtonClass = this.getAttribute('previous') ? "enabled" : 'disabled';
-      const nextButtonClass = this.getAttribute('previous') ? "enabled" : 'disabled';
+      const nextButtonClass = this.getAttribute('next') ? "enabled" : 'disabled';
       const next = this.getAttribute('next') || '';
-      const nextsDataVar = this.getAttribute('next') ? "data-popup-target" : 'data-no-link';
-      this.innerHTML = `
-        <section class="popup" id="${this.id || 'popup'}" aria-hidden="true">
-          <div class="popup-overlay" aria-hidden="true">
-            <section id="${popupId}" class="popup-modal" tabindex="-1">
-              <header class="popup-header">
-                ${title }
-                <button class="popup-close" type="button" aria-label="Fechar" data-popup-close>✕</button>
-              </header>
-              <div class="popup-content">
-                <div>${body}</div>
-              </div>
-              <div class="popup-actions">
+      const nextsDataVar = this.getAttribute('next') ? "data-popup-open" : 'data-no-link';
+
+      // move children into a fragment
+      const frag = document.createDocumentFragment();
+      while (this.firstChild) frag.appendChild(this.firstChild);
+
+      // build the modal *inner* (no overlay)
+      const tpl = document.createElement('template');
+      tpl.id = id;
+      tpl.innerHTML = `
+        <section id="${id}" class="popup-modal" tabindex="-1">
+          <header class="popup-header">
+            ${title ? `${title}` : ''}
+            <button class="popup-close" type="button" aria-label="Fechar" data-popup-close>✕</button>
+          </header>
+          <div class="popup-content">
+            <div class="popup-slot"></div>
+          </div>
+          <div class="popup-actions">
                 <!-- Next/Prev inside the popup -->
                 <button class="btn previous ${previousButtonClass}" ${previousDataVar}="#${previous}">Anga Anterior</button>
                 <!-- CTA that closes the popup and scrolls to #book-now -->
@@ -222,8 +272,13 @@
           </div>
         </section>
       `;
-      // Log for debugging
+
+      // insert original children into .popup-slot
+      tpl.content.querySelector('.popup-slot').appendChild(frag);
+
+      this.replaceWith(tpl); // now we just have <template id="popup-...">
     }
   }
   customElements.define('py-popup', PYPopUp);
+
 })();

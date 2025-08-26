@@ -46,6 +46,6 @@ section.brand-white-bg {
   font-size: clamp(1.2rem, 2.5vw, 3rem);
 }
 
-.section.popup {
+.section.popup-overlay {
   padding: 2rem;
 }

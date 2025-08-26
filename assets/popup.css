@@ -67,26 +67,26 @@
   outline: 2px solid #7aa2ff; outline-offset: 2px;
 }
 
-.popup .hero-image {
+.popup-overlay .hero-image {
     transform: scale(1.28);
 }
 
-.popup h4 {
+.popup-overlay h4 {
     color: black;
     font-size: clamp(1.1rem, 2vw, 2.4rem);
     margin-top: 0;
 }
 
-.popup .section.large .section-subtitle {
+.popup-overlay .section.large .section-subtitle {
     font-size: clamp(1.2rem, 2vw, 3rem);
 }
 
-.popup .card.centered .card-content {
+.popup-overlay .card.centered .card-content {
     width: 100%;
     align-self: flex-start;
 }
 
-.popup .card.tiny .card-content h3 {
+.popup-overlay .card.tiny .card-content h3 {
     width: 100%;
     align-self: center;
     margin-bottom: 0.5rem;
@@ -101,13 +101,13 @@
   /* background-color: var(--brand-primary); */
 }
 
-.popup .popup-actions .btn {
+.popup-overlay .popup-actions .btn {
   background: transparent;
   color: var(--brand-white);
   border: none;
 }
 
-.popup .popup-actions .btn.primary {
+.popup-overlay .popup-actions .btn.primary {
   cursor: pointer;
   background-color: var(--brand-white);
   color: black;
@@ -115,32 +115,45 @@
   margin: 0.5rem;
 }
 
-.popup .popup-actions .btn:hover {
+.popup-overlay .popup-actions .btn:hover {
   cursor: pointer;
 }
 
-.popup .popup-actions .btn.previous::before {
+.popup-overlay .popup-actions .btn.previous::before {
   content: "\2190";
   margin-right: 0.5rem;
 }
 
-.popup .popup-actions .btn.next::after {
+.popup-overlay .popup-actions .btn.next::after {
   content: "\2192";
   margin-left: 0.5rem;
   
 }
 
-.popup .popup-actions .btn.disabled {
-  background-color: var(--muted);
+.popup-overlay .popup-actions .btn.disabled {
+  color: var(--brand-secondary);
+  cursor: initial;
 }
 
-/* Animações leves */
+/* Animações leves
 @media (prefers-reduced-motion: no-preference) {
   .popup-overlay.is-open { animation: fadeIn .18s ease-out; }
   .popup-modal { animation: riseIn .18s ease-out; }
 }
 @keyframes fadeIn { from { opacity: 0 } to { opacity: 1 } }
+@keyframes riseIn { from { transform: translateY(8px); opacity: .96 } to { transform: translateY(0); opacity: 1 } } */
+
+@media (prefers-reduced-motion: no-preference) {
+  /* Animate ONLY when overlay carries .animating */
+  .popup-overlay.is-open.animating { animation: fadeIn .18s ease-out; }
+  .popup-overlay.is-open.animating .popup-modal { animation: riseIn .18s ease-out; }
+  /* Safety: a way to force-disable animation on a specific modal */
+  .popup-modal.no-anim { animation: none !important; }
+}
+
+@keyframes fadeIn { from { opacity: 0 } to { opacity: 1 } }
 @keyframes riseIn { from { transform: translateY(8px); opacity: .96 } to { transform: translateY(0); opacity: 1 } }
 
 /* Bloqueio de scroll de fundo quando aberto */
 html.popup-lock, body.popup-lock { overflow: hidden; }
+
