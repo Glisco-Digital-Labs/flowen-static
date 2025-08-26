@@ -5,6 +5,7 @@
 @import url("card.css");
 @import url("cta-strip.css");
 @import url("popup.css");
+@import url("calendar.css");
 /* Minimal, modern styles for Flowen Yoga */
 :root{
   --maxw: 1100px;
@@ -18,6 +19,17 @@
   --brand-white: #f0ebdc;
   --brand-primary: #294565;
   --brand-secondary: #569b97;
+
+  /* Calendar Settings below */
+  --start-hour: 6;          /* 06:00 */
+  --end-hour: 20;           /* 20:00 */
+  --hours: calc(var(--end-hour) - var(--start-hour));
+  --grid-bg: #f8f9fb;
+  --hour-line: #e6e8ee;
+  --accent: #3b82f6;        /* podes ajustar a cor do evento */
+  --text: #0f172a;
+  --muted: #64748b;
+  --radius: 10px;
 }
 @media (prefers-color-scheme: dark){
   :root{
