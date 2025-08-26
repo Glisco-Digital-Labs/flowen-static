@@ -1,4 +1,4 @@
-# Patsy Yoga — Web Components Starter (No Build)
+# Flowen Yoga — Web Components Starter (No Build)
 A tiny, throwaway-friendly site built with plain HTML, CSS, and a few Web Components.
 
 ## What you get

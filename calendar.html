@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Calendário Semanal (06:00–20:00)</title>
+<style>
+  :root {
+    --start-hour: 6;          /* 06:00 */
+    --end-hour: 20;           /* 20:00 */
+    --hours: calc(var(--end-hour) - var(--start-hour));
+    --grid-bg: #f8f9fb;
+    --line: #e6e8ee;
+    --accent: #3b82f6;        /* podes ajustar a cor do evento */
+    --text: #0f172a;
+    --muted: #64748b;
+    --radius: 10px;
+  }
+
+  body {
+    margin: 0; padding: 24px;
+    font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji";
+    color: var(--text); background: white;
+  }
+
+  .calendar {
+    display: grid;
+    grid-template-columns: 70px 1fr;
+    gap: 8px;
+    max-width: 1100px; margin: 0 auto;
+  }
+
+  /* Coluna das horas */
+  .hours {
+    position: relative;
+    background: var(--grid-bg);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    overflow: hidden;
+    height: 100%;
+  }
+  .hours .scale {
+    position: relative;
+    height: 100%;
+    min-height: 550px; /* Cresce com o conteúdo; ajustado pelo JS */
+  }
+  .hour-line {
+    position: absolute; left: 0; right: 0;
+    height: 1px; background: var(--line);
+  }
+  .hour-label {
+    position: absolute; left: 8px; transform: translateY(-50%);
+    font-size: 12px; color: var(--muted);
+  }
+
+  /* Grelha dos dias */
+  .days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 8px;
+  }
+  .day {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    min-width: 0;
+  }
+  .day-header {
+    text-align: center;
+    font-weight: 600;
+    padding: 6px 0;
+  }
+  .day-body {
+    position: relative;
+    background: var(--grid-bg);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    overflow: hidden;
+    min-height: 550px; /* altura inicial; JS sincroniza com escala */
+  }
+
+  /* Linhas horárias dentro de cada dia */
+  .day-body .hour-line {
+    background: var(--line);
+  }
+
+  /* Evento */
+  .event {
+    position: absolute;
+    left: 6px; right: 6px;
+    background: var(--accent);
+    color: white;
+    border-radius: 8px;
+    padding: 6px 8px;
+    font-size: 13px; line-height: 1.2;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    overflow: hidden;
+  }
+  .event .title {
+    font-weight: 600;
+  }
+  .event .time {
+    opacity: 0.9;
+    font-size: 12px;
+    margin-top: 2px;
+  }
+
+  .event.asana {
+    background: #10b981;
+  }
+
+  .event.family {
+    background: #ECE7D5;
+    color: #0f172a;
+  }
+
+  /* Legenda / instruções */
+  .hint {
+    padding-left: 9rem;
+    max-width: 1100px; 
+    margin: 12px auto 0; 
+    font-size: 13px; 
+    color: var(--muted);
+  }
+
+  /* .variant::before {
+    content: "\25FC";
+  } */
+
+  .caption {
+        gap: 2rem;
+        max-width: 1100px;
+        margin: 1rem auto;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        padding-left: 9rem;
+  }
+
+  .caption .variant {
+    font-size: 14px;
+    margin-right: 2rem;
+  }
+
+  .variant.asana .sq {
+    color: #10b981;
+  }
+  .variant.meditation .sq {
+    color: #3b82f6;
+  }
+  .variant.meditation .sq {
+    color: #3b82f6;
+  }
+
+  .variant.family .sq {
+    color: #ECE7D5;
+  }
+
+  code { background: #f1f5f9; padding: 2px 5px; border-radius: 6px; }
+</style>
+</head>
+<body>
+
+<div class="calendar">
+  <div class="hours">
+    <div class="day-header">&nbsp;</div>
+    <div class="scale" id="hour-scale"></div>
+  </div>
+
+  <div class="days" id="days-grid">
+    <!-- As colunas dos dias são geradas por JS -->
+  </div>
+</div>
+
+<div class="caption">
+    <div class="variant asana"><span class="sq">■</span> Força e Flexibilidade</div>
+    <div class="variant meditation"><span class="sq">■</span> Meditação e Concentração</div>
+    <div class="variant family"><span class="sq">■</span> Aula em Família - crianças bem-vindas</div>
+</div>
+
+<p class="hint">
+  Todas as aulas sujeitas a inscrição prévia, no máximo até uma hora antes da aula. 
+</p>
+
+<script>
+  /* =========================
+     CONFIGURAÇÃO / DADOS
+     ========================= */
+  const daysOrder = ["Seg", "Ter", "Qua", "Qui", "Sex", "Sáb", "Dom"];
+  const START_MIN = 6 * 60;      // 06:00
+  const END_MIN   = 20 * 60;     // 20:00
+  const TOTAL_MIN = END_MIN - START_MIN;
+
+  // 👉 EDITA AQUI: eventos da semana
+  const events = [
+    // Blocos Sádhana (dias úteis)
+    ...["Ter","Qui",].flatMap(d => ([
+      { day: d, title: "Sádhana", start: "06:00", end: "07:00", variant:"" },
+      { day: d, title: "Sádhana", start: "18:00", end: "19:00", variant:"asana" },
+    ])),
+
+    ...["Seg","Qua","Sex"].flatMap(d => ([
+      { day: d, title: "Sádhana", start: "06:00", end: "07:00", variant:"asana" },
+      { day: d, title: "Sádhana", start: "18:00", end: "19:00", variant:"" },
+    ])),
+
+    ...["Qua","Sex"].flatMap(d => ([
+      { day: d, title: "Sádhana", start: "12:45", end: "14:00" },
+    ])),
+
+    ...["Seg","Qui"].flatMap(d => ([
+      { day: d, title: "Sádhana", start: "12:45", end: "14:00", variant:"asana" },
+    ])),
+
+
+    { day: "Sáb", title: "Sádhana", start: "08:30", end: "10:00", variant:"meditation"  },
+    { day: "Qua", title: "Family", start: "17:00", end: "17:30", variant:"family"  },
+  ];
+
+  /* =========================
+     FUNÇÕES DE APOIO
+     ========================= */
+  function timeToMinutes(hhmm) {
+    const [h, m] = hhmm.split(":").map(Number);
+    return h * 60 + m;
+  }
+
+  function clampToRange(mins) {
+    return Math.min(Math.max(mins, START_MIN), END_MIN);
+  }
+
+  function minsToPercent(minsFromStart) {
+    return (minsFromStart / TOTAL_MIN) * 100;
+  }
+
+  /* =========================
+     RENDERIZAÇÃO
+     ========================= */
+  const daysGrid = document.getElementById("days-grid");
+  const hourScale = document.getElementById("hour-scale");
+
+  // Cria as colunas dos dias
+  daysOrder.forEach(label => {
+    const dayCol = document.createElement("div");
+    dayCol.className = "day";
+
+    const header = document.createElement("div");
+    header.className = "day-header";
+    header.textContent = label;
+
+    const body = document.createElement("div");
+    body.className = "day-body";
+
+    dayCol.appendChild(header);
+    dayCol.appendChild(body);
+    daysGrid.appendChild(dayCol);
+  });
+
+  // Desenha linhas das horas (lado esquerdo e em cada dia)
+  function renderHourLines(container) {
+    for (let h = 6; h <= 20; h++) {
+      const y = minsToPercent((h * 60) - START_MIN);
+      const line = document.createElement("div");
+      line.className = "hour-line";
+      line.style.top = y + "%";
+      container.appendChild(line);
+
+      // labels apenas na coluna das horas (não nos dias)
+      if (container === hourScale && h < 20) {
+        const label = document.createElement("div");
+        label.className = "hour-label";
+        label.style.top = y+1.5 + "%";
+        label.textContent = (""+h).padStart(2,"0") + ":00";
+        container.appendChild(label);
+      }
+    }
+  }
+  renderHourLines(hourScale);
+  document.querySelectorAll(".day-body").forEach(renderHourLines);
+
+  // Ajusta alturas mínimas para sincronizar visualmente
+  const gridHeight = Math.max(550, TOTAL_MIN * 0.5); // 2px por minuto ~ ajustável
+  console.log("Grid height:", gridHeight, TOTAL_MIN);
+//   hourScale.style.minHeight = gridHeight + "px";
+  hourScale.style.height = gridHeight + "px";
+  document.querySelectorAll(".day-body").forEach(el => el.style.height = gridHeight + "px");
+
+  // Indexação rápida: mapa de label -> elemento do corpo do dia
+  const dayBodies = {};
+  document.querySelectorAll(".day").forEach((dayEl, idx) => {
+    const label = daysOrder[idx];
+    const body = dayEl.querySelector(".day-body");
+    dayBodies[label] = body;
+  });
+
+  // Renderiza eventos
+  events.forEach(ev => {
+    const body = dayBodies[ev.day];
+    if (!body) return; // ignora dias inválidos
+
+    const startAbs = clampToRange(timeToMinutes(ev.start));
+    const endAbs   = clampToRange(timeToMinutes(ev.end));
+    if (endAbs <= startAbs) return;
+
+    const topPct = minsToPercent(startAbs - START_MIN);
+    const heightPct = minsToPercent(endAbs - startAbs);
+
+    const eventEl = document.createElement("div");
+    eventEl.className = "event " + ev.variant;
+    eventEl.style.top = topPct + "%";
+    eventEl.style.height = heightPct-2 + "%";
+
+    const titleEl = document.createElement("div");
+    titleEl.className = "title";
+    titleEl.textContent = ev.title || "Evento";
+
+    const descEl = document.createElement("div");
+    descEl.className = "description";
+    descEl.textContent = ev.variant == "asana" ? "Força & Flexibilidade" :
+                          ev.variant == "meditation" ? "Concentração e Meditação" :
+                          ev.variant == "family" ? "Yoga em Família" : "";
+
+    const timeEl = document.createElement("div");
+    timeEl.className = "time";
+    timeEl.textContent = `${ev.start}–${ev.end}`;
+
+    eventEl.appendChild(titleEl);
+    // eventEl.appendChild(descEl);
+    eventEl.appendChild(timeEl);
+    body.appendChild(eventEl);
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+.grid{
+  display:grid;
+  gap:var(--gap);
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  /* align-items:start; */
+  height: max-content;
+  align-items: stretch;
+}
+
+.grid.airy {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+
+.grid > * { height: 100%; }

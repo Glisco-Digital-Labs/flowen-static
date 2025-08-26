@@ -1,0 +1,159 @@
+/* ===== Popup (Flowen) ===== */
+:root{
+  --popup-bg: #111;           /* ajusta ao teu tema */
+  --popup-fg: #fff;
+  --popup-radius: 16px;
+  --popup-shadow: 0 24px 60px rgba(0,0,0,.45);
+  --popup-border: 1px solid rgba(255,255,255,.08);
+}
+
+.popup-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.6);
+  display: none;              /* controlado por .is-open */
+  align-items: center;
+  justify-content: center;
+  padding: 4vh 2vw;
+  z-index: 9999;
+}
+
+.popup-overlay.is-open { display: flex; }
+
+.popup-modal {
+  position: relative;
+  width: min(76vw, 1100px);
+  max-height: 88vh;
+  background: var(--popup-bg);
+  color: var(--popup-fg);
+  border-radius: var(--popup-radius);
+  border: var(--popup-border);
+  box-shadow: var(--popup-shadow);
+  overflow: hidden;           /* header fixo, conteúdo scrolla */
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header fixo */
+.popup-header {
+  padding: 16px 56px 16px 20px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-bottom: 1px solid rgba(255,255,255,.06);
+  background-color: var(--brand-primary);
+}
+
+/* Conteúdo scrollável */
+.popup-content {
+  /* padding: 20px; */
+  overflow: auto;
+  background-color: var(--brand-white);
+}
+
+/* Botão fechar (X) */
+.popup-close {
+  position: absolute;
+  top: 10px; right: 10px;
+  width: 36px; height: 36px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.06);
+  color: inherit;
+  display: grid; place-items: center;
+  cursor: pointer;
+}
+.popup-close:hover { background: rgba(255,255,255,.12); }
+.popup-close:focus-visible {
+  outline: 2px solid #7aa2ff; outline-offset: 2px;
+}
+
+.popup-overlay .hero-image {
+    transform: scale(1.28);
+}
+
+.popup-overlay h4 {
+    color: black;
+    font-size: clamp(1.1rem, 2vw, 2.4rem);
+    margin-top: 0;
+}
+
+.popup-overlay .section.large .section-subtitle {
+    font-size: clamp(1.2rem, 2vw, 3rem);
+}
+
+.popup-overlay .card.centered .card-content {
+    width: 100%;
+    align-self: flex-start;
+}
+
+.popup-overlay .card.tiny .card-content h3 {
+    width: 100%;
+    align-self: center;
+    margin-bottom: 0.5rem;
+}
+
+.popup-actions {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  background-color: var(--brand-secondary);
+  /* background-color: var(--brand-primary); */
+}
+
+.popup-overlay .popup-actions .btn {
+  background: transparent;
+  color: var(--brand-white);
+  border: none;
+}
+
+.popup-overlay .popup-actions .btn.primary {
+  cursor: pointer;
+  background-color: var(--brand-white);
+  color: black;
+  padding: 0.25rem 1rem;
+  margin: 0.5rem;
+}
+
+.popup-overlay .popup-actions .btn:hover {
+  cursor: pointer;
+}
+
+.popup-overlay .popup-actions .btn.previous::before {
+  content: "\2190";
+  margin-right: 0.5rem;
+}
+
+.popup-overlay .popup-actions .btn.next::after {
+  content: "\2192";
+  margin-left: 0.5rem;
+  
+}
+
+.popup-overlay .popup-actions .btn.disabled {
+  color: var(--brand-secondary);
+  cursor: initial;
+}
+
+/* Animações leves
+@media (prefers-reduced-motion: no-preference) {
+  .popup-overlay.is-open { animation: fadeIn .18s ease-out; }
+  .popup-modal { animation: riseIn .18s ease-out; }
+}
+@keyframes fadeIn { from { opacity: 0 } to { opacity: 1 } }
+@keyframes riseIn { from { transform: translateY(8px); opacity: .96 } to { transform: translateY(0); opacity: 1 } } */
+
+@media (prefers-reduced-motion: no-preference) {
+  /* Animate ONLY when overlay carries .animating */
+  .popup-overlay.is-open.animating { animation: fadeIn .18s ease-out; }
+  .popup-overlay.is-open.animating .popup-modal { animation: riseIn .18s ease-out; }
+  /* Safety: a way to force-disable animation on a specific modal */
+  .popup-modal.no-anim { animation: none !important; }
+}
+
+@keyframes fadeIn { from { opacity: 0 } to { opacity: 1 } }
+@keyframes riseIn { from { transform: translateY(8px); opacity: .96 } to { transform: translateY(0); opacity: 1 } }
+
+/* Bloqueio de scroll de fundo quando aberto */
+html.popup-lock, body.popup-lock { overflow: hidden; }
+
