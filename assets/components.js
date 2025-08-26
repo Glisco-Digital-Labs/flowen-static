@@ -281,4 +281,36 @@
   }
   customElements.define('py-popup', PYPopUp);
 
+  class PYCalendar extends HTMLElement{
+    connectedCallback(){
+      if (this.dataset.upgraded === '1') return; // <-- guard
+      this.dataset.upgraded = '1';
+
+      this.innerHTML = `
+        <div class="calendar">
+          <div class="hours">
+            <div class="day-header">&nbsp;</div>
+            <div class="scale" id="hour-scale"></div>
+          </div>
+
+          <div class="days" id="days-grid">
+            <!-- As colunas dos dias são geradas por JS -->
+          </div>
+          </div>
+
+          <div class="caption">
+            <div class="variant asana"><span class="sq">■</span> Força e Flexibilidade</div>
+            <div class="variant meditation"><span class="sq">■</span> Meditação e Concentração</div>
+            <div class="variant family"><span class="sq">■</span> Aula em Família - crianças bem-vindas</div>
+          </div>
+
+          <p class="hint">
+          Todas as aulas sujeitas a inscrição prévia, no máximo até uma hora antes da aula. 
+          </p>
+        </div>  
+      `;
+    }
+  }
+  customElements.define('py-calendar', PYCalendar);
+
 })();
