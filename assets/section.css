@@ -4,7 +4,7 @@
   color: var(black);
 }
 .section h2 {
-  font-size: clamp(1.2rem, 3.5vw, 4.6rem);
+  font-size: clamp(1.75rem, 3.5vw, 4.6rem);
   margin-top: 0;
 }
 
@@ -19,7 +19,7 @@
 }
 
 .section p {
-  font-size: clamp(1rem, 2.4vw, 1.2rem);
+  font-size: clamp(1.2rem, 2.4vw, 1.2rem);
   color: black;
   line-height: 1.6;
 }
@@ -48,4 +48,14 @@ section.brand-white-bg {
 
 .section.popup-overlay {
   padding: 2rem;
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 1rem 0.5rem;
+  }
+
+  .section.tight {
+    padding: 0 0.5rem;
+  }
 }

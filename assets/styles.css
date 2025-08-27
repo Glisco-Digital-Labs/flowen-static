@@ -91,3 +91,9 @@ section > h2{margin-top:0.6rem}
 .center{text-align:center;}
 .black-text{color:black;}
 
+@media (max-width: 600px) {
+  .wrap {
+   padding: 0.75rem;
+   
+  }
+}
