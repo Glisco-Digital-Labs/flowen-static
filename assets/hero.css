@@ -1,62 +1,71 @@
+/* ===== Base hero container ===== */
 .hero {
-  position: relative;           /* establishes stacking context */
-  isolation: isolate;           /* keeps overlay behind content */
-  min-height: 56vh;
-  display: grid;
-  align-items: center;
-  overflow: hidden;
-  color: #fff;
-  /* padding: clamp(2rem, 6vw, 6rem) clamp(1rem, 4vw, 3rem); */
+  position: relative;
+  display: grid;         /* lets you center text later if needed */
+  overflow: hidden;      /* crop any overflow from the image */
   padding: 0;
+  color: #fff;
+
+  /* Desktop/tablet default: full width, cap the height at 600px.
+     The clamp keeps it responsive but never taller than 600px. */
+  height: clamp(380px, 60vh, 650px);
 }
 
-/* ABSOLUTE media stack so it does NOT push content down */
+/* Absolute media layer (doesn’t push content) */
 .hero-media {
   position: absolute;
   inset: 0;
-  z-index: 0;                   /* behind content */
+  z-index: 0;
 }
 
-.hero-image,
-.hero-overlay {
+/* Image wrapper: crops the image */
+.hero-image {
   position: absolute;
   inset: 0;
+  overflow: hidden;
 }
 
-.hero-image {
-  background-size: cover;
-  background-position: center 30%;
-  background-repeat: no-repeat;
-  transform: scale(1.02);
-}
+/* ===== Image positioning (unified approach) =====
+   We always center the image with top/left 50% and translate.
+   Then we switch scale mode per breakpoint: 
+   - Desktop: width:100% (crop vertically)
+   - Mobile:  height:100% (crop horizontally) 
+*/
+.hero-image-img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  will-change: transform;
 
-.hero-image img {
+  /* Desktop scale mode (crop vertically, keep full width) */
   width: 100%;
   height: auto;
-  /* max-height: 500px; */
-  object-fit: cover;
-  object-position: var(--hero-position, center 30%);
+
+  /* Center the image by default */
+  transform: translate(-50%, -50%);
 }
 
 .hero-overlay {
-  background: linear-gradient(to bottom, rgba(0,0,0,.55), rgba(0,0,0,.35));
+  position: relative;
+  inset: 0;
+  height: 100%;
 }
 
-/* Content sits above */
 .hero-content {
   position: relative;
-  z-index: 1;                   /* above media stack */
+  z-index: 1;           
+  align-self: end;        
   max-width: 70rem;
   margin-inline: auto;
   text-align: center;
   display: flex;
-  flex-direction: column; /* stack vertically */
+  flex-direction: column; 
   gap: 2rem; 
-  margin-top: 20% !important;
+  margin-bottom: 5% !important;
 }
 
 .hero-content h1 {
-    font-size: clamp(1.6rem, 4.2vw, 2.4rem);
+    font-size: clamp(2rem, 4.2vw, 2.4rem);
     line-height: 1.1;
     letter-spacing: -0.01em;
     margin: 0 0 0.5rem 0;
@@ -64,8 +73,7 @@
 }
 
 .hero-content .sub {
-    /* color: var(--muted); */
-    font-size: clamp(1rem, 2.4vw, 2.2rem);
+    font-size: clamp(1.4rem, 2.4vw, 2.2rem);
     margin: 0;
 }
 
@@ -74,25 +82,12 @@
     opacity: 0.8;
     color: var(--brand-primary);
     border: none;
-    /* font-weight: bold; */
 }
 
 .hero.product {
   display: flex;
   flex-direction: column-reverse;
 
-}
-
-.hero.product .hero-media, 
-.hero.product .hero-media .hero-image {
-  position: unset;
-  width: 100%;
-  height: auto;
-}
-
-.hero.product .hero-media .hero-image img {
-  object-position: unset;
-  min-height: 550px;
 }
 
 .hero.product .hero-content {
@@ -119,4 +114,54 @@
   font-size: clamp(1rem, 2.4vw, 1.6rem);
   margin: 0 0 0 2rem;
   text-align: right;
+} */
+
+/* .hero.product .hero-media .hero-image img {
+  object-position: unset;
+  min-height: 550px;
+}
+
+/* ===== Desktop / large screens ===== */
+@media (min-width: 851px) {
+  .hero {
+    /* Full width, max-height ~600px already handled by clamp above */
+  }
+
+  .hero-image-img {
+    /* Center composition on desktop. You can tweak if needed. */
+    transform: translate(-50%, -50%);
+  }
+}
+
+/* ===== Mobile / up to 850px ===== */
+@media (max-width: 850px) {
+  .hero {
+    /* Full width, max-height = 70vh as requested */
+    height: 70vh;
+    max-height: 70vh;
+  }
+
+  .hero-image-img {
+    /* Switch scale mode: fill height, crop horizontally */
+    width: auto;
+    height: 100%;
+
+    /* FOCAL-POINT CONTROL
+       --focal-x is the horizontal percentage of the image width
+       you want centered in the viewport (e.g., 60%).
+       We translate the image left by that same percentage of its own width,
+       aligning that vertical axis with the container center. */
+    --focal-x: 55%;
+
+    /* translateX uses the image’s own width as reference, so this is stable
+       across all viewport widths. */
+    transform: translate(calc(-1 * var(--focal-x)), -50%);
+  }
+}
+
+@media (min-width: 1300px) {
+  .hero {
+    /* Full width, max-height = 70vh as requested */
+    height: clamp(600px, 65vh, 800px);
+  }
 }
