@@ -15,7 +15,14 @@
               <h1>${title}</h1>
               ${subtitle ? `<p class="sub">${subtitle}</p>` : ''}
             </div>
-            <nav class="site" aria-label="Principal navegação">
+            <!-- Burger button (shown <768px) -->
+            <button class="nav-toggle" aria-controls="primary-nav" aria-expanded="false">
+              <span class="sr-only">Abrir menu</span>
+              <span class="bar"></span>
+              <span class="bar"></span>
+              <span class="bar"></span>
+            </button>
+            <nav class="site primary-nav" id="primary-nav" aria-label="Principal navegação">
               ${nav}
             </nav>
           </div>
