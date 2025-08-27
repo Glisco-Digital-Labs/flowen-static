@@ -1,0 +1,109 @@
+/* Accessibility helper */
+.sr-only {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  margin: -1px; padding: 0; border: 0;
+  clip: rect(0 0 0 0); clip-path: inset(50%); overflow: hidden;
+}
+
+/* Header layout */
+header.site .wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  position: relative; /* for the mobile panel positioning */
+}
+
+.brand h1{margin:0;font-size:clamp(1.2rem,3.2vw,1.6rem)}
+.brand .sub{margin:0;color:var(--muted); font-size:.95rem}
+nav.site a{
+  text-decoration:none; padding:.55rem .7rem; border-radius:.6rem;
+}
+nav.site a:hover{background:rgba(127,127,127,.12)}
+
+.primary-nav {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.primary-nav a {
+  text-decoration: none;
+  line-height: 1;
+  padding: .5rem 0; /* vertical rhythm without changing desktop layout too much */
+}
+
+/* Burger button (hidden on desktop) */
+.nav-toggle {
+  display: none;
+  appearance: none;
+  background: none;
+  border: 0;
+  padding: .5rem;
+  cursor: pointer;
+  line-height: 0;
+}
+
+.nav-toggle .bar {
+  display: block;
+  width: 22px;
+  height: 2px;
+  margin: 4px 0;
+  background: currentColor; /* inherits text color */
+  border-radius: 1px;
+}
+
+/* ===== Mobile: <768px ===== */
+@media (max-width: 767px) {
+  .nav-toggle { 
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center; 
+    justify-content: center; }
+
+  /* Turn the nav into a dropdown panel */
+  .primary-nav {
+    position: absolute;
+    top: 100%;
+    left: 0; right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+
+    /* Panel look (tweak colors to your theme) */
+    background: var(--nav-panel-bg, #ffffff);
+    color: var(--nav-panel-fg, inherit);
+    border-top: 1px solid var(--nav-panel-border, #eaeaea);
+    box-shadow: 0 6px 20px rgba(0,0,0,.08);
+
+    /* Collapsed state */
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(-4px);
+    transition:
+      max-height .3s ease,
+      opacity .2s ease,
+      transform .2s ease;
+  }
+
+  .primary-nav a {
+    padding: .875rem 1rem;
+    border-bottom: 1px solid var(--nav-item-sep, #f2f2f2);
+  }
+
+  /* Open when header has the data attribute (toggled by JS) */
+  header.site[data-nav-open] .primary-nav {
+    max-height: 60vh;   /* sufficient for a handful of links */
+    opacity: 1;
+    transform: translateY(0);
+    z-index: 2;
+  }
+}
+
+/* ===== Desktop: ≥768px ===== */
+@media (min-width: 768px) {
+  /* keep classic inline nav; burger hidden already */
+}
+
