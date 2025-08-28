@@ -1,0 +1,93 @@
+/* ===========================
+   Flowen — FAQ (py-faqs / py-faq)
+   =========================== */
+
+/* Tokens (podes mapear aos do teu design system) */
+:root{
+  --faq-border: rgba(0,0,0,.12);
+  --faq-focus: #5b9aff;
+  --faq-answer: inherit;
+}
+
+/* Suporte dark mode opcional */
+@media (prefers-color-scheme: dark){
+  :root{
+    --faq-border: rgba(255,255,255,.16);
+    --faq-focus: #8bb4ff;
+  }
+}
+
+/* Container */
+py-faqs,
+.py-faqs{
+  display:block;
+  width:100%;
+  max-width:70ch;          /* ajusta à tua medida preferida */
+  margin-inline:auto;
+}
+
+/* Item */
+py-faq,
+.py-faq{
+  display:block;
+  border-bottom:1px solid var(--faq-border);
+  text-align: left;
+  margin-right: 2rem;
+  font-size: 1.1rem;
+}
+
+/* Botão/pergunta */
+.py-faq__q{
+  all:unset;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  width:100%;
+  cursor:pointer;
+  padding:1rem 0;
+  line-height:1.4;
+}
+
+.py-faq__q:focus-visible{
+  outline:2px solid var(--faq-focus);
+  outline-offset:4px;
+}
+
+.py-faq__q-text{
+  font-family: "Lato", sans-serif;
+  /* font-weight: 300; */
+  font-style: normal;
+  font-weight:400;         /* usa o teu token de peso/título se tiveres */
+
+}
+
+/* Ícone seta */
+.py-faq__icon{
+  transition:transform .2s ease;
+  margin-left:1rem;
+  flex:0 0 auto;
+}
+
+/* Rodar ícone quando aberto */
+py-faq[open] .py-faq__icon,
+.py-faq[open] .py-faq__icon{
+  transform:rotate(180deg);
+}
+
+/* Painel/Resposta */
+.py-faq__a{
+  overflow:hidden;
+  height:0;
+  transition:height .22s ease;
+}
+
+.py-faq__a-inner{
+  padding:0 0 1rem 0;
+  color:var(--faq-answer);
+}
+
+/* Respeitar utilizadores que preferem menos animação */
+@media (prefers-reduced-motion: reduce){
+  .py-faq__icon{ transition:none; }
+  .py-faq__a{ transition:none; }
+}

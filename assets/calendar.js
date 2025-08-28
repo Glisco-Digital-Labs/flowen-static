@@ -144,3 +144,27 @@
     eventEl.appendChild(timeEl);
     body.appendChild(eventEl);
   });
+
+  const viewport = document.querySelector('.days-viewport');
+  const scroller = document.querySelector('.days-scroll');
+
+  function updateFades(){
+    const maxScroll = scroller.scrollWidth - scroller.clientWidth;
+    // small epsilon for sub-pixel & iOS bounce
+    const atStart = scroller.scrollLeft <= 1;
+    const atEnd   = scroller.scrollLeft >= maxScroll - 1;
+
+    viewport.classList.toggle('at-start', atStart);
+    viewport.classList.toggle('at-end', atEnd);
+  }
+
+  scroller.addEventListener('scroll', updateFades, { passive: true });
+  window.addEventListener('resize', updateFades);
+
+  // update on content size changes too
+  if ('ResizeObserver' in window) {
+    new ResizeObserver(updateFades).observe(scroller);
+  }
+
+  // initial state
+  requestAnimationFrame(updateFades);

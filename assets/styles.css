@@ -7,6 +7,7 @@
 @import url("cta-strip.css");
 @import url("popup.css");
 @import url("calendar.css");
+@import url("faq.css");
 /* Minimal, modern styles for Flowen Yoga */
 :root{
   --maxw: 1100px;
@@ -19,7 +20,9 @@
   --line: #e8e8ef;
   --brand-white: #f0ebdc;
   --brand-primary: #294565;
+  --brand-primary-bg-alpha: rgba(41, 69, 101, 0.5);
   --brand-secondary: #569b97;
+  --brand-secondary-bg-alpha: rgba(86, 155, 151, 0.5);
 
   /* Calendar Settings below */
   --start-hour: 6;          /* 06:00 */

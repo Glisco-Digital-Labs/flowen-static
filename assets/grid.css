@@ -1,7 +1,11 @@
 .grid{
+  font-family: "Lato", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+
   display:grid;
   gap:var(--gap);
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
   /* align-items:start; */
   height: max-content;
   align-items: stretch;
@@ -9,9 +13,23 @@
 
 .grid.airy {
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1.5rem;
+    /* gap: 1.5rem; */
+    gap: calc(2*var(--gap));
     margin-bottom: 2rem;
 }
 
+.grid.mobile-greedy {
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  margin: 0;
+}
+
+.grid.mobile-greedy .card.tiny {
+  margin: 0 10%;
+}
+
+.section .grid p,
+.section .grid li {
+      font-size: 1.2rem;
+}
 
 .grid > * { height: 100%; }
