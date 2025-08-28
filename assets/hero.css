@@ -85,18 +85,33 @@
 }
 
 .hero.product {
+  height: auto;
   display: flex;
   flex-direction: column-reverse;
 
 }
 
+.hero.product .hero-media {
+  position: unset;
+}
+
+.hero.product .hero-media .hero-image {
+  position: unset;
+  transform: none;
+}
+
+.hero.product .hero-media .hero-image img {
+  position: unset;
+  transform: none;
+}
+
 .hero.product .hero-content {
-  display: flex;
+  display: grid;
+  grid-template-columns: 2fr 3fr;
   flex-direction: row;
   text-align: left;
-  margin: 0 0 1rem 0;
-  margin-top: 0 !important;
-  gap: 0;
+  margin: 0 !important;
+  gap: 1rem;  
 }
 
 .hero.product .hero-content h1 {
@@ -111,7 +126,7 @@
 
 .hero.product .hero-content .sub {
   color: black;
-  font-size: clamp(1rem, 2.4vw, 1.6rem);
+  font-size: clamp(1.2rem, 2.4vw, 1.6rem);
   margin: 0 0 0 2rem;
   text-align: right;
 } */
@@ -135,10 +150,10 @@
 
 /* ===== Mobile / up to 850px ===== */
 @media (max-width: 850px) {
-  .hero {
+  .hero.product {
     /* Full width, max-height = 70vh as requested */
-    height: 70vh;
-    max-height: 70vh;
+    height: auto;
+    max-height: 75vh;
   }
 
   .hero-image-img {
@@ -156,6 +171,23 @@
     /* translateX uses the image’s own width as reference, so this is stable
        across all viewport widths. */
     transform: translate(calc(-1 * var(--focal-x)), -50%);
+  }
+
+  .hero.product .hero-image-img {
+    width: 100%;
+    height: auto;
+  }
+
+  .hero.product .hero-content {
+    /* grid-template-columns: none;
+    grid-template-rows: 2fr 5fr; */
+    display: flex;
+    flex-direction: column;
+  }
+
+  .hero.product .hero-content .sub {
+    margin: 0;
+    text-align: left;
   }
 }
 

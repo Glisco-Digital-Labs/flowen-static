@@ -38,6 +38,7 @@
     display: grid;
     grid-template-rows: auto 1fr;
     min-width: 0;
+    max-width: 200px;
   }
   .day-header {
     text-align: center;
@@ -62,7 +63,7 @@
   .event {
     position: absolute;
     left: 6px; right: 6px;
-    background: var(--accent);
+    background: var(--brand-primary);
     color: white;
     border-radius: 8px;
     padding: 6px 8px;
@@ -80,7 +81,7 @@
   }
 
   .event.asana {
-    background: #10b981;
+    background: var(--brand-secondary);
   }
 
   .event.family {
@@ -90,11 +91,15 @@
 
   /* Legenda / instruções */
   .hint {
+    font-family: "Lato", sans-serif;
+    font-weight: 300;
+    font-style: normal;
     padding-left: 9rem;
     max-width: 1100px; 
     margin: 12px auto 0; 
     font-size: 13px; 
     color: var(--muted);
+
   }
 
   /* .variant::before {
@@ -117,17 +122,102 @@
   }
 
   .variant.asana .sq {
-    color: #10b981;
+    color: var(--brand-secondary);
   }
   .variant.meditation .sq {
-    color: #3b82f6;
+    color: var(--brand-primary);
   }
   .variant.meditation .sq {
-    color: #3b82f6;
+    color: var(--brand-primary));
   }
 
   .variant.family .sq {
-    color: #ECE7D5;
+    color: var(--brand-white);
   }
 
   code { background: #f1f5f9; padding: 2px 5px; border-radius: 6px; }
+
+  /* contentor que rola na horizontal */
+.days-scroll{
+  position: relative;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch; /* inércia no iOS */
+}
+
+/* largura mínima para forçar scroll em ecrãs pequenos */
+.days{
+  /* cada dia com ~280px em mobile; ajusta ao gosto */
+  min-width: calc(7 * 200px);
+}
+
+/* snap column-by-column no mobile */
+@media (max-width: 900px){
+  .days-scroll{ scroll-snap-type: x proximity; }
+  .day{ scroll-snap-align: start; }
+}
+
+/* cabeçalho do dia colado no topo ao rolar verticalmente */
+.day-header{
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background: var(--grid-bg);
+}
+
+/* pequenas sombras de “dica” de que há mais conteúdo para o lado */
+.days-scroll::before,
+.days-scroll::after{
+  content:"";
+  position:absolute; top:0; bottom:0; width:20px;
+  pointer-events:none; z-index:3;
+}
+/* .days-scroll::before{
+  left:0;
+  background: linear-gradient(to right, white, rgba(255,255,255,0));
+}
+.days-scroll::after{
+  right:0;
+  background: linear-gradient(to left, white, rgba(255,255,255,0));
+} */
+
+/* opcional: barras de scroll mais discretas (apenas navegadores que suportem) */
+.days-scroll{ scrollbar-width: thin; }
+.days-scroll::-webkit-scrollbar{ height: 8px; }
+.days-scroll::-webkit-scrollbar-thumb{ background: #cbd5e1; border-radius: 999px; }
+
+.days-viewport{
+  position: relative;
+  overflow: hidden; /* so the gradient edges don't overflow */
+}
+
+.days-scroll{
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* gradients live on the NON-scrolling wrapper */
+.days-viewport::before,
+.days-viewport::after{
+  content:"";
+  position:absolute;
+  top:0; bottom:0; width:20px;
+  pointer-events:none; z-index:3;
+}
+.days-viewport::before{
+  left:0;
+  background: linear-gradient(to right, var(--grid-bg, #fff), rgba(255,255,255,0));
+}
+.days-viewport::after{
+  right:0;
+  background: linear-gradient(to left, var(--grid-bg, #fff), rgba(255,255,255,0));
+}
+
+/* default: both fades visible */
+.days-viewport::before,
+.days-viewport::after { opacity: 1; transition: opacity .2s ease; }
+
+/* hide left fade at start */
+.days-viewport.at-start::before { opacity: 0; }
+
+/* hide right fade at end */
+.days-viewport.at-end::after { opacity: 0; }

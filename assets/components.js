@@ -72,9 +72,10 @@
       const subtitle = this.getAttribute('subtitle') || '';
       const style = this.getAttribute('style') || '';
       const body = this.innerHTML.trim();
+      const wrapper = this.getAttribute('wrapper') || 'wrap';
       this.innerHTML = `
         <section class="section ${style}">
-          <div class="wrap">
+          <div class="${wrapper}">
             ${title ? `<h2 class="section-title lato-light-italic dark-text">${title}</h2>` : ''}
             ${subtitle ? `<p class="section-subtitle lato-light">${subtitle}</p>` : ''}
             <div class="section-body">${body}</div>
@@ -300,8 +301,10 @@
             <div class="scale" id="hour-scale"></div>
           </div>
 
-          <div class="days" id="days-grid">
-            <!-- As colunas dos dias são geradas por JS -->
+          <div class="days-viewport">
+            <div class="days-scroll">
+              <div class="days" id="days-grid"></div>
+            </div>
           </div>
           </div>
 
@@ -319,5 +322,166 @@
     }
   }
   customElements.define('py-calendar', PYCalendar);
+
+// (() => {
+//   // --- injeta CSS uma só vez ---
+//   const STYLE_ID = 'py-faq-styles';
+//   if (!document.getElementById(STYLE_ID)) {
+//     const s = document.createElement('style');
+//     s.id = STYLE_ID;
+//     s.textContent = `
+//       .py-faqs{display:block; width:100%; max-width:70ch; margin-inline:auto}
+//       .py-faq{border-bottom:1px solid var(--faq-border, rgba(0,0,0,.12))}
+//       .py-faq__q{
+//         all:unset; display:flex; align-items:center; justify-content:space-between;
+//         width:100%; cursor:pointer; padding:1rem 0; line-height:1.4;
+//       }
+//       .py-faq__q:focus-visible{outline:2px solid var(--faq-focus, #5b9aff); outline-offset:4px}
+//       .py-faq__q-text{font-weight:600}
+//       .py-faq__icon{transition:transform .2s ease; margin-left:1rem; flex:0 0 auto}
+//       .py-faq[open] .py-faq__icon{transform:rotate(180deg)}
+//       .py-faq__a{
+//         overflow:hidden; height:0; transition:height .22s ease;
+//       }
+//       .py-faq__a-inner{
+//         padding:0 0 1rem 0; color:var(--faq-answer, inherit);
+//       }
+//     `;
+//     document.head.appendChild(s);
+//   }
+
+  // util: uid
+  let uid = 0;
+  const nextId = (p='pyfaq') => `${p}-${++uid}`;
+
+  class PYFaqs extends HTMLElement {
+    connectedCallback(){
+      if (this.dataset.upgraded === '1') return;
+      this.dataset.upgraded = '1';
+      this.setAttribute('role', 'list');
+      this.singleOpen = this.getAttribute('mode') !== 'multiple'; // default: single
+
+      // fecha outros quando um abre
+      this.addEventListener('py-faq-opened', (e) => {
+        if (!this.singleOpen) return;
+        const current = e.detail?.faq;
+        this.querySelectorAll('py-faq[open]').forEach(faq => {
+          if (faq !== current) faq.close();
+        });
+      });
+
+      // navegação por setas entre perguntas
+      this.addEventListener('keydown', (e) => {
+        const questions = Array.from(this.querySelectorAll('.py-faq__q'));
+        const idx = questions.indexOf(document.activeElement);
+        if (idx === -1) return;
+
+        if (e.key === 'ArrowDown') {
+          e.preventDefault();
+          (questions[idx+1] || questions[0]).focus();
+        } else if (e.key === 'ArrowUp') {
+          e.preventDefault();
+          (questions[idx-1] || questions[questions.length-1]).focus();
+        } else if (e.key === 'Home') {
+          e.preventDefault(); questions[0]?.focus();
+        } else if (e.key === 'End') {
+          e.preventDefault(); questions[questions.length-1]?.focus();
+        }
+      });
+    }
+  }
+
+  class PYFaq extends HTMLElement {
+    connectedCallback(){
+      if (this.dataset.upgraded === '1') return;
+      this.dataset.upgraded = '1';
+
+      // estrutura
+      const qText = this.getAttribute('question') || this.getAttribute('title') || 'Pergunta';
+      const isOpen = this.hasAttribute('open');
+      const qId = nextId('q');
+      const aId = nextId('a');
+      const body = this.innerHTML;
+
+      this.classList.add('py-faq');
+      this.setAttribute('role', 'listitem');
+      this.innerHTML = `
+        <button class="py-faq__q" id="${qId}" aria-expanded="${isOpen}" aria-controls="${aId}">
+          <span class="py-faq__q-text">${qText}</span>
+          <svg class="py-faq__icon" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M7 10l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </button>
+        <div class="py-faq__a" id="${aId}" role="region" aria-labelledby="${qId}" ${isOpen ? '' : 'hidden'}>
+          <div class="py-faq__a-inner">${body}</div>
+        </div>
+      `;
+
+      this.$btn = this.querySelector('.py-faq__q');
+      this.$panel = this.querySelector('.py-faq__a');
+
+      // estado inicial
+      if (isOpen) {
+        this.$panel.style.height = 'auto';
+      }
+
+      // eventos
+      this.$btn.addEventListener('click', () => this.toggle());
+      this.$btn.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          this.toggle();
+        }
+      });
+    }
+
+    open(){
+      if (this.hasAttribute('open')) return;
+      this.setAttribute('open', '');
+      this.$btn.setAttribute('aria-expanded', 'true');
+      this.$panel.hidden = false;
+      // anima altura -> auto
+      this.$panel.style.height = '0px';
+      requestAnimationFrame(() => {
+        const h = this.$panel.scrollHeight;
+        this.$panel.style.height = h + 'px';
+        const onEnd = () => {
+          this.$panel.style.height = 'auto';
+          this.$panel.removeEventListener('transitionend', onEnd);
+        };
+        this.$panel.addEventListener('transitionend', onEnd);
+      });
+      // notifica o container
+      this.dispatchEvent(new CustomEvent('py-faq-opened', {bubbles:true, detail:{faq:this}}));
+    }
+
+    close(){
+      if (!this.hasAttribute('open')) return;
+      this.removeAttribute('open');
+      this.$btn.setAttribute('aria-expanded', 'false');
+
+      // de auto -> número -> 0
+      const current = this.$panel.scrollHeight;
+      this.$panel.style.height = current + 'px';
+      // força reflow
+      void this.$panel.offsetHeight;
+      this.$panel.style.height = '0px';
+
+      const onEnd = () => {
+        this.$panel.hidden = true;
+        this.$panel.removeEventListener('transitionend', onEnd);
+      };
+      this.$panel.addEventListener('transitionend', onEnd);
+    }
+
+    toggle(){
+      if (this.hasAttribute('open')) this.close();
+      else this.open();
+    }
+  }
+
+  customElements.define('py-faqs', PYFaqs);
+  customElements.define('py-faq', PYFaq);
+
 
 })();

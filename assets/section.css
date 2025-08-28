@@ -50,12 +50,49 @@ section.brand-white-bg {
   padding: 2rem;
 }
 
+section.padded {
+  padding:0 16px;
+}
+
+section.inverted-primary {
+  background-color: var(--brand-primary);
+}
+
+section.inverted-secondary {
+  /* background-color: var(--brand-secondary); */
+  background-color: var(--brand-secondary-bg-alpha);
+  /* background-color: var(--brand-primary-bg-alpha); */
+}
+
+section .left-align > * {
+  text-align: left;
+}
+
+section .section-subtitle {
+  font-size: clamp(1.2rem, 2vw, 1.5rem);
+}
+
+.inverted-primary h2,
+.inverted-primary .card.tiny h3,
+.inverted-primary p,
+section.inverted-primary > * {
+  color: var(--brand-white);
+}
+
 @media (max-width: 768px) {
+  section.padded {
+    padding: 0 0 3rem 0;
+    margin: 3rem 0 0 0;
+  }
   .section {
     padding: 1rem 0.5rem;
   }
 
   .section.tight {
     padding: 0 0.5rem;
+  }
+
+  .section.stats {
+    padding: 0;
   }
 }
