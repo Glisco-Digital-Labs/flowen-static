@@ -308,13 +308,13 @@
           </div>
           </div>
 
-          <div class="caption">
+          <div class="calendar-caption">
             <div class="variant asana"><span class="sq">■</span> Força e Flexibilidade</div>
             <div class="variant meditation"><span class="sq">■</span> Meditação e Concentração</div>
             <div class="variant family"><span class="sq">■</span> Aula em Família - crianças bem-vindas</div>
           </div>
 
-          <p class="hint">
+          <p class="calendar-hint">
           Todas as aulas sujeitas a inscrição prévia, no máximo até uma hora antes da aula. 
           </p>
         </div>  

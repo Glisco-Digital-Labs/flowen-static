@@ -1,4 +1,5 @@
 .calendar {
+    position: relative;
     display: grid;
     grid-template-columns: 70px 1fr;
     gap: 8px;
@@ -90,7 +91,7 @@
   }
 
   /* Legenda / instruções */
-  .hint {
+  .calendar-hint {
     font-family: "Lato", sans-serif;
     font-weight: 300;
     font-style: normal;
@@ -106,7 +107,7 @@
     content: "\25FC";
   } */
 
-  .caption {
+  .calendar-caption {
         gap: 2rem;
         max-width: 1100px;
         margin: 1rem auto;
@@ -116,7 +117,7 @@
         padding-left: 9rem;
   }
 
-  .caption .variant {
+  .calendar-caption .variant {
     font-size: 14px;
     margin-right: 2rem;
   }
@@ -221,3 +222,20 @@
 
 /* hide right fade at end */
 .days-viewport.at-end::after { opacity: 0; }
+
+@media (max-width: 768px) {
+  .calendar-caption {
+    flex-direction: column;
+    gap: 0;
+    padding-left: 0;
+    text-align: left;
+    font-size: 1rem;
+  }
+
+  .calendar-hint {
+    padding-left: 0;
+    text-align: left;
+    font-size: 1rem !important;
+    line-height: 1.1rem !important;
+  }
+}
