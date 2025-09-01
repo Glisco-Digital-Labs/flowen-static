@@ -133,7 +133,7 @@
     descEl.className = "description";
     descEl.textContent = ev.variant == "asana" ? "Força & Flexibilidade" :
                           ev.variant == "meditation" ? "Concentração e Meditação" :
-                          ev.variant == "family" ? "Yoga em Família" : "";
+                          ev.variant == "family" ? "Yôga em Família" : "";
 
     const timeEl = document.createElement("div");
     timeEl.className = "time";

@@ -15,6 +15,8 @@
   position: absolute;
   inset: 0;
   z-index: 0;                   /* behind content */
+  border-radius: 10px;
+  overflow: hidden;
 }
 
 .cta-strip-image,
@@ -28,6 +30,11 @@
   background-position: center 30%;
   background-repeat: no-repeat;
   transform: scale(1.02);
+}
+
+.cta-strip-image img {
+  width: 100%;
+  height: auto;
 }
 
 .cta-strip-overlay {
@@ -78,5 +85,12 @@
 
   .cta-strip-content a.btn {
     margin: 0 20% 1rem 20%;
+  }
+}
+
+@media (max-width: 850px) {
+  .cta-strip-image img {
+    height: 100%;
+    width: auto;
   }
 }

@@ -7,6 +7,16 @@
   --popup-border: 1px solid rgba(255,255,255,.08);
 }
 
+.popup-trigger {
+  align-self: anchor-center;
+}
+
+.popup-trigger a.btn:hover {
+  background-color: var(--brand-secondary);
+  color: white;
+  border-color: var(--brand-secondary);
+}
+
 .popup-overlay {
   position: fixed;
   inset: 0;

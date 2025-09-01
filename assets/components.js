@@ -1,4 +1,4 @@
-// Lightweight Web Components for Flowen Yoga
+// Lightweight Web Components for Flowen Yôga
 (function(){
   // Header
   class PYHeader extends HTMLElement{
@@ -12,7 +12,7 @@
         <header class="site" role="banner">
           <div class="wrap">
             <div class="brand">
-              <h1>${title}</h1>
+              <h1><a href="/">${title}</a></h1>
               ${subtitle ? `<p class="sub">${subtitle}</p>` : ''}
             </div>
             <!-- Burger button (shown <768px) -->
@@ -104,7 +104,9 @@
                 style="--cta-strip-min-h:${minH}; --cta-strip-position:${position}; --cta-strip-overlay:${overlay};">
           ${image ? `
             <div class="cta-strip-media">
-              <div class="cta-strip-image" style="background-image:url('${image}');"></div>
+              <div class="cta-strip-image"">
+                <img src="${image}"/>
+              </div>
               <div class="cta-strip-overlay" style="background: ${overlay}"></div>
             </div>` : ''
           }

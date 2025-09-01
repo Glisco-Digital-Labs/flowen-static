@@ -51,7 +51,7 @@ section.brand-white-bg {
 }
 
 section.padded {
-  padding:0 16px;
+  padding:1rem 16px 3rem 16px;
 }
 
 section.inverted-primary {
@@ -62,6 +62,14 @@ section.inverted-secondary {
   /* background-color: var(--brand-secondary); */
   background-color: var(--brand-secondary-bg-alpha);
   /* background-color: var(--brand-primary-bg-alpha); */
+}
+
+section.rounded {
+  border-radius: 10px;
+}
+
+section.airy {
+  margin: 3rem 0;
 }
 
 section .left-align > * {
@@ -84,6 +92,10 @@ section.inverted-primary > * {
     padding: 0 0 3rem 0;
     margin: 3rem 0 0 0;
   }
+  section.airy {
+    margin: 3rem 0 2rem 0;
+  }
+
   .section {
     padding: 1rem 0.5rem;
   }
@@ -94,5 +106,9 @@ section.inverted-primary > * {
 
   .section.stats {
     padding: 0;
+  }
+
+  .section.large .section-subtitle {
+    font-size: clamp(1.2rem, 6vw, 1.75rem);
   }
 }
