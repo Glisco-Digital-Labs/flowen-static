@@ -10,6 +10,14 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+  <!-- My Utility Tag Register -->
+  <script>
+    function track(eventName, params = {}) {
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ event: eventName, ...params });
+    }
+  </script>
+
   <!-- Google Tag Manager -->
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -40,65 +48,41 @@
     <section class="" >
       <py-hero
         title="Flowen Metamorfose"
-        subtitle="Começa as manhãs com energia ou faz uma pausa ao meio-dia para recarregar foco. 
-            <strong>Aulas diárias de Yôga online</strong>, adaptadas ao teu ritmo."
-        image="/assets/img/woman-practicing-living-room.jpg"
+        subtitle="Programa <strong>personalizado e individual</strong> de 12 semanas, com acompanhamento profundo, para <strong>transformar corpo, mente e energia</strong>. Acompanhamento presencial ou online, conforme preferires."
+        image="/assets/img/private-yoga-lesson.jpg"
         overlay="linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0))" 
         position="center 25%"
         min-h="60vh"
         style="product">
       </py-hero>
     </section>
-    <py-section style="stats">
-        <py-grid style="">
-          <py-card
-            title="3x por dia"
-            subtitle="Escolhe entre a turma Amanhecer (6:00-7:00), Meio-dia (12:45-13:45) ou Entardecer (18:00-19:00)."
-            image="/assets/img/number-3x.jpg"
-            style="tiny with-image">
-          </py-card>
-          <py-card
-            title="60 minutos"
-            subtitle="Suficientemente longas para uma prática completa, suficientemente curtas para caber na tua rotina."
-            image="/assets/img/number-60.jpg"
-            style="tiny with-image">
-          </py-card>
-          <py-card
-            title="8 Angas"
-            subtitle="A prática completa de Ashtanga Sádhana, com pranayama, mantra, asanas e meditação."
-            image="/assets/img/number-8.jpg"
-            style="tiny with-image">
-          </py-card>
-        </py-grid>
-      </py-section>
-    <section id="porque" class="padded airy inverted-secondary rounded">
+    <section id="porque" class="padded airy ">
         <py-section
-          title="Porquê praticar Ashtanga Sádhana diariamente?"
-          subtitle="A prática diária deste Yôga em 8 partes (Ashtanga Sádhana) cria <strong>consistência</strong>, melhora a <strong>força e mobilidade</strong>, regula o <strong>sistema nervoso</strong> e clarifica a mente. 
-          Em Ashtanga Sádhana, o corpo, a respiração e a atenção trabalham em conjunto, promovendo <strong>energia estável</strong> e <strong>foco</strong> ao longo do dia.">
+          title="O teu corpo pede outra atenção, a tua mente reclama espaço, a tua energia anseia por direcção."
+          subtitle="Há momentos em que uma prática em grupo não basta. O Flowen Metamorfose nasce para ser esse território íntimo: um programa pensado para ti, no qual cada gesto, cada respiração e cada encontro refletem as tuas necessidades mais profundas e os teus objetivos pessoais.">
         </py-section>
         <py-grid style="mobile-greedy">
             <py-card
-              title="Disciplina que liberta"
-              subtitle="Rotinas simples que reduzem a fricção da decisão e aumentam o bem-estar."
+              title="Programa feito à tua medida"
+              subtitle="Sessões personalizadas, adaptadas ao teu corpo, ritmo e objetivos, para uma transformação profunda e consistente."
               style="tiny centered">
             </py-card>
             <py-card
-              title="Respiração como âncora"
-              subtitle="Pranayama e vinyasa para estabilizar emoções e melhorar a produtividade."
+              title="Método integral e transformador"
+              subtitle="Combina ásanas, respiração, concentração e gestão de energia, fundindo tradição do Yôga com experiência clínica e pedagógica."
               style="tiny centered">
             </py-card>
             <py-card
-              title="Progressão segura"
-              subtitle="Adaptações para todos os níveis, com orientação técnica e cuidado."
+              title="Acompanhamento próximo e flexível"
+              subtitle="Aulas individuais online ou presenciais, com apoio contínuo e calendário ajustável à tua disponibilidade e necessidades."
               style="tiny centered">
             </py-card>
           </py-grid>
         </div>  
   </section>
-  <section>
+  <!-- <section>
       <py-cta-strip
-        title="O que é o Yôga? E o Ashtanga Sádhana?"
+        title="O que é o Yôga? E o Ashtánga Sádhana?"
         subtitle="Explora esta prática milenar completa que integra corpo, mente e respiração. Eleva o teu corpo, a tua mente e o teu espírito!"
         image="/assets/img/shiva-nataraja.jpg"
         overlay="linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0.15), rgba(0,0,0,0.35), rgba(0,0,0,0.55))"
@@ -106,123 +90,105 @@
         cta-text="Explora o SwáSthya Yôga">
       </py-cta-strip>
 
+    </section> -->
+    <section>
+      <py-cta-strip
+        title="O que é o Flowen Metamorfose?"
+        subtitle="Mais do que aulas, o Flowen Metamorfose é um caminho criado em torno da tua vida, dos teus desejos e da tua energia."
+        image="/assets/img/meditating-45-year-old-woman.jpg"
+        overlay="linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0.15), rgba(0,0,0,0.40), rgba(0,0,0,0.65))">
+      </py-cta-strip>
+
     </section>
+    <section id="o-que-e">
+      <py-section
+        subtitle="Cada etapa é pensada para te aproximar de quem podes ser — corpo, mente e espírito alinhados em movimento e presença. "
+        style="lato-light">
+      </py-section>
+
+      <py-grid style="mobile-greedy">
+        <py-card
+          title="Aula 0 – O mapa da tua transformação"
+          subtitle="Um encontro inicial de avaliação, onde mergulhamos nos teus objetivos pessoais, emocionais e profissionais. É aqui que nasce o programa único que guiará a tua metamorfose."
+          image="/assets/img/energetic-35-year-old-woman-1.jpg"
+          style="centered">
+        </py-card>
+
+        <py-card
+          title="Seis aulas de Ashtánga Sádhana"
+          subtitle="Ao longo de 12 semanas, seis sessões presenciais de 90 minutos, desenhadas à tua medida. Cada prática é ajustada para acompanhar o teu progresso e abrir novos caminhos."
+          image="/assets/img/private-yoga-lesson.jpg"
+          style="centered"></py-card>
+
+        <py-card
+          title="Prática pessoal desenhada para ti"
+          subtitle="Recebes um plano de prática que respeita a tua disponibilidade e intensifica os pontos que mais te aproximam dos teus objetivos. Uma bússola diária, só tua."
+          image="/assets/img/living-room-janurassana.jpg"
+          style="centered"></py-card>
+        
+        <py-card
+          title="Acesso privilegiado à comunidade"
+          subtitle="Enquanto percorres o teu programa, podes aceder ao Flowen Essência e Plenitude com 30% de desconto, ampliando o teu espaço de prática e conexão."
+          image="/assets/img/online-yoga-class.jpg"
+          style="centered"></py-card>
+        
+        <py-card
+          title="Filosofia que se revela na prática"
+          subtitle="Aprofundamos os princípios do SwáSthya Yôga no ritmo que desejares. Não como teoria abstrata, mas como experiência viva, integrada nos teus gestos e respiração."
+          image="/assets/img/prancha-yoga.jpg"
+          style="centered"></py-card>
+        
+          <py-card
+          title="Para mulheres de alta performance"
+          subtitle="Pensado para quem equilibra carreira, família e vida interior. Para mulheres que se sentem sobrecarregadas ou que procuram uma espiritualidade sem misticismo, ancorada na prática real."
+          image="/assets/img/strong-and-flexible-casual-mom.jpg"
+          style="centered"></py-card>
+        
+        
+      </py-grid>
+    </section>
+
     <section id="como-funciona">
       <py-section
-        title="Como funciona"
-        subtitle="Simples e acessível — pratica em casa, connosco, ao vivo."
+        title="Um processo guiado, passo a passo."
+        subtitle="Nada é deixado ao acaso: cada encontro, cada prática e cada pausa são desenhados para que a tua evolução seja natural, contínua e profundamente transformadora."
         style="lato-light">
       </py-section>
 
       <py-grid style="mobile-greedy">
         <py-card
-          title="Aulas ao vivo"
-          subtitle="A mesma presença e disciplina, no conforto do teu espaço."
-          image="/assets/img/online-yoga-class.jpg"
+          title="Diagnóstico inicial e alinhamento"
+          subtitle="Começamos com a Aula 0, onde exploramos objetivos de vida e contexto pessoal. É o ponto de partida para a jornada, criando a base sólida do teu programa."
+          image="/assets/img/yoga-chat.jpg"
           style="centered">
-          <section class="product-card-content">
-            <ul class="feature-list">
-              <li>As aulas são transmitidas por Zoom</li>
-              <li>Após inscrição recebes o link de acesso no teu email.</li>
-              <li>Audio de alta qualidade</li>
-              <li>Música de fundo adequada à prática para uma imersão total</li>
-              <li>Instrutora presente e atenta, disponível para corrigir </li>
-            </ul>
-          </section>
         </py-card>
 
         <py-card
-          title="Guia do praticante"
-          subtitle="Pequenos passos para aproveitares ao máximo a tua prática:"
-          image="/assets/img/preparing-yoga-class2.jpg"
-          style="centered">
-          <section class="product-card-content">
-            <ul class="feature-list">
-              <li>Evita comer até 90 minutos antes da aula</li>
-              <li>Veste roupa confortável que permita liberdade de movimento</li>
-              <li>Procura um espaço tranquilo, longe de distrações</li>
-              <li>Estende o teu tapete e liga-te 5 minutos antes</li>
-              <li>Desfruta da prática e do momento só para ti</li>
-            </ul>
-          </section>
-        </py-card>
+          title="Estrutura em 12 semanas de evolução diária"
+          subtitle="Ao longo de três meses, o ritmo é cuidadosamente planeado. Seis sessões de 90 minutos marcam a cadência, enquanto as práticas pessoais sustentam o progresso entre encontros."
+          image="/assets/img/private-yoga-lesson.jpg"
+          style="centered"></py-card>
+
+        <py-card
+          title="Acompanhamento personalizado"
+          subtitle="Cada aula é uma leitura do teu momento. O programa ajusta-se ao teu corpo, energia e disponibilidade, garantindo que a transformação se adapta à tua realidade."
+          image="/assets/img/living-room-janurassana.jpg"
+          style="centered"></py-card>
+                
       </py-grid>
     </section>
-    <section>
-      <div id="timetable">
-        <py-section
-          title="Horários"
-          subtitle="Com 3 aulas por dia, podes escolher a que melhor se adapta ao teu dia. E mudar conforme achares melhor - não precisas de vir sempre à mesma hora. ">
-          <py-calendar></py-calendar>
-        </py-section>
-      </div>
-    </section>
-    <section id="planos">
-      <py-section
-        title="Escolhe o teu ritmo de prática"
-        subtitle="Dois planos simples, a mesma energia transformadora."
-        style="lato-light">
-      </py-section>
-
-      <py-grid style="mobile-greedy">
-        <!-- Card: Flowen Essência -->
-        <py-card
-          title="Flowen Essência"
-          subtitle="2x/semana para integrar a prática com leveza e consistência."
-          image="/assets/img/flowen-essencia.jpg"
-          style="centered">
-
-          <section class="product-card-content">
-            <div class="price-line">
-              <span class="price">€35<span class="per">/mês</span></span>
-            </div>
-
-            <ul class="feature-list">
-              <li>2 aulas/semana ao vivo por Zoom</li>
-              <li>Acesso completo nos dias escolhidos</li>
-              <li>Ideal para começar e criar rotina</li>
-            </ul>
-
-            <a class="cta-inline ml-onclick-form" 
-               href="#checkout-essencia" 
-               aria-label="Subscrever Flowen Essência"
-               onclick="ml('show', 'L45KpW', true)">Subscrever Essência</a>
-
-            <p class="smallnote">Cancela quando quiseres. Link de Zoom enviado após inscrição.</p>
-          </section>
-        </py-card>
-
-        <!-- Card: Flowen Plenitude (Destacado) -->
-        <py-card
-          title="Flowen Plenitude"
-          subtitle="Ilimitado — pratica quando quiseres, evolui todos os dias."
-          image="/assets/img/flowen-plenitude-2.jpg"
-          style="centered">
-
-          <section class="product-card-content">
-            <!-- <div class="badge">Mais escolhido</div> -->
-
-            <div class="price-line">
-              <span class="price">€50<span class="per">/mês</span></span>
-            </div>
-
-            <ul class="feature-list">
-              <li>Aulas ilimitadas (até 12/semana)</li>
-              <li>Total liberdade de horários</li>
-              <li>Evolução consistente com prática diária</li>
-            </ul>
-
-            <a class="cta-inline ml-onclick-form" 
-               href="javascript:void(0)" 
-               aria-label="Subscrever Flowen Plenitude" 
-               onclick="ml('show', 'L45KpW', true)">Subscrever Plenitude</a>
-            <!-- <button class="ml-onclick-form" onclick="ml('show', 'L45KpW', true)">Click here to show form</button> -->
-
-            <p class="smallnote">Cancela quando quiseres. Link de Zoom enviado após inscrição.</p>
-          </section>
-        </py-card>
-      </py-grid>
-    </section>
+    
+    
+    <section class="airy">
+      <py-cta-strip
+        title="Preferes um começo mais gradual?"
+        subtitle="Vê as nossas aulas online. Dois planos simples e acessíveis."
+        image="/assets/img/woman-practicing-living-room.jpg"
+        overlay="linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0.15), rgba(0,0,0,0.35), rgba(0,0,0,0.55))"
+        cta-link="/sobre/beneficios-do-yoga.html"
+        cta-text="Inspira-te">
+      </py-cta-strip>
+  </section>
 
     <section class="airy">
       <py-cta-strip
@@ -234,6 +200,8 @@
         cta-text="Inspira-te">
       </py-cta-strip>
   </section>
+
+  
     
   </main>
 

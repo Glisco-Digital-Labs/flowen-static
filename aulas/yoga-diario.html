@@ -10,6 +10,14 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+  <!-- My Utility Tag Register -->
+  <script>
+    function track(eventName, params = {}) {
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ event: eventName, ...params });
+    }
+  </script>
+
   <!-- Google Tag Manager -->
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -65,7 +73,7 @@
           </py-card>
           <py-card
             title="8 Angas"
-            subtitle="A prática completa de Ashtanga Sádhana, com pranayama, mantra, asanas e meditação."
+            subtitle="A prática completa de Ashtánga Sádhana, com pranayama, mantra, asanas e meditação."
             image="/assets/img/number-8.jpg"
             style="tiny with-image">
           </py-card>
@@ -73,9 +81,9 @@
       </py-section>
     <section id="porque" class="padded airy inverted-secondary rounded">
         <py-section
-          title="Porquê praticar Ashtanga Sádhana diariamente?"
-          subtitle="A prática diária deste Yôga em 8 partes (Ashtanga Sádhana) cria <strong>consistência</strong>, melhora a <strong>força e mobilidade</strong>, regula o <strong>sistema nervoso</strong> e clarifica a mente. 
-          Em Ashtanga Sádhana, o corpo, a respiração e a atenção trabalham em conjunto, promovendo <strong>energia estável</strong> e <strong>foco</strong> ao longo do dia.">
+          title="Porquê praticar Ashtánga Sádhana diariamente?"
+          subtitle="A prática diária deste Yôga em 8 partes (<a href='/sobre/yoga.html' title='Descobre o Yôga milenar que praticamos'>Ashtánga Sádhana</a>) cria <strong>consistência</strong>, melhora a <strong>força e mobilidade</strong>, regula o <strong>sistema nervoso</strong> e clarifica a mente. 
+          Em Ashtánga Sádhana, o corpo, a respiração e a atenção trabalham em conjunto, promovendo <strong>energia estável</strong> e <strong>foco</strong> ao longo do dia.">
         </py-section>
         <py-grid style="mobile-greedy">
             <py-card
@@ -96,17 +104,7 @@
           </py-grid>
         </div>  
   </section>
-  <section>
-      <py-cta-strip
-        title="O que é o Yôga? E o Ashtanga Sádhana?"
-        subtitle="Explora esta prática milenar completa que integra corpo, mente e respiração. Eleva o teu corpo, a tua mente e o teu espírito!"
-        image="/assets/img/shiva-nataraja.jpg"
-        overlay="linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0.15), rgba(0,0,0,0.35), rgba(0,0,0,0.55))"
-        cta-link="/sobre/yoga.html"
-        cta-text="Explora o SwáSthya Yôga">
-      </py-cta-strip>
-
-    </section>
+  
     <section id="como-funciona">
       <py-section
         title="Como funciona"
@@ -225,9 +223,26 @@
     </section>
 
     <section class="airy">
+      <py-section
+          title="Queres saber mais sobre o nosso tipo de Yôga e os seus benefícios?"
+          subtitle="">
+        </py-section>
+
       <py-cta-strip
-        title="Ainda insegura? Explora os Benefícios do Yôga"
-        subtitle="<strong>Menos stress, melhor postura, mais força e flexibilidade, descanso e foco profundos</strong>"
+        title="O que é o Yôga? E o Ashtánga Sádhana?"
+        subtitle="Explora esta prática milenar completa que integra corpo, mente e respiração. Eleva o teu corpo, a tua mente e o teu espírito!"
+        image="/assets/img/shiva-nataraja.jpg"
+        overlay="linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0.15), rgba(0,0,0,0.35), rgba(0,0,0,0.55))"
+        cta-link="/sobre/yoga.html"
+        cta-text="Explora o SwáSthya Yôga">
+      </py-cta-strip>
+
+    </section>
+
+    <section class="airy">
+      <py-cta-strip
+        title="Explora os Benefícios do Yôga"
+        subtitle="Menos stress, melhor postura, mais força e flexibilidade, descanso e foco profundos"
         image="/assets/img/living-room-janurassana.jpg"
         overlay="linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0.15), rgba(0,0,0,0.35), rgba(0,0,0,0.55))"
         cta-link="/sobre/beneficios-do-yoga.html"
