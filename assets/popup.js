@@ -32,6 +32,7 @@
   }
 
   function openPopup(target) {
+    console.log(`****** popup ${target}`);
     const popup = typeof target === 'string' ? document.querySelector(target) : target;
     if (!popup || state.active === popup) return;
 
@@ -287,33 +288,6 @@
     return true;
   }
 
-  // function openFromTemplate(selector){
-  //   const tpl = document.querySelector(selector);
-  //   if (!(tpl instanceof HTMLTemplateElement)) return false;
-
-  //   const ov = ensureOverlay();
-  //   lastFocus = document.activeElement;
-
-  //   const nextModal = tpl.content.firstElementChild.cloneNode(true);
-
-  //   // if overlay already open, swap; else, open
-  //   if (currentModal) {
-  //     ov.replaceChild(nextModal, currentModal);
-  //   } else {
-  //     ov.appendChild(nextModal);
-  //   }
-  //   // ✅ always ensure overlay is visible (handles "closed by legacy handler" case)
-  //   ov.classList.add('is-open');
-  //   document.documentElement.classList.add('popup-lock');
-  //   document.body.classList.add('popup-lock');
-
-  //   currentModal = nextModal;
-  //   setAria(currentModal, true);
-  //   document.documentElement.dataset.currentPopup = selector;
-  //   focusFirst(currentModal);
-  //   return true;
-  // }
-
   function closePortal(){
     if (!overlay || !currentModal) return;
     overlay.classList.remove('is-open');
@@ -357,9 +331,13 @@
       e.preventDefault();
       const toSel = openBtn.getAttribute('data-popup-open');
       // Prefer swap (no flicker)
+      console.log(`Popup => nav netx/prev to ${toSel}`);
       return window.Popup.swap(toSel);
     }
+
+    // We're closing the popup or moving away from the page anyway
     const goto = e.target.closest('[data-popup-goto]');
+    // If go-to is not null, we're simply closing the popup and moving to the target
     if (goto) {
       e.preventDefault();
       const sel = goto.getAttribute('data-popup-goto');
@@ -371,16 +349,6 @@
         setTimeout(() => target.focus({ preventScroll:true }), 350);
       }
     }
-  });
-
-  document.addEventListener('click', (e) => {
-    const t = e.target.closest('[data-popup-target]');
-    if (!t) return;
-    e.preventDefault();
-    const sel = t.getAttribute('data-popup-target');
-    // prefer portal swap/open
-    if (window.Popup?.swap) window.Popup.swap(sel);
-    else if (window.Popup?.open) window.Popup.open(sel);
   });
 
   // Make [data-popup-close] call the portal close

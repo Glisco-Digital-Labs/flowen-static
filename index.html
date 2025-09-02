@@ -10,6 +10,13 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+  <!-- My Utility Tag Register -->
+  <script>
+    function track(eventName, params = {}) {
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ event: eventName, ...params });
+    }
+  </script>
   <!-- Google Tag Manager -->
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -19,7 +26,6 @@
   <!-- End Google Tag Manager -->
   <script defer src="/assets/components.js"></script>
   <script defer src="/assets/navigation.js"></script>
-
 </head>
 <body>
   <!-- Google Tag Manager (noscript) -->
@@ -28,10 +34,10 @@
   <!-- End Google Tag Manager (noscript) -->
   <py-header title="Flowen Yôga" subtitle="">
     <a href="/">Início</a>
-    <a href="/cursos/">Cursos</a>
+    <!-- <a href="/cursos/">Cursos</a> -->
     <a href="/aulas/">Aulas</a>
     <a href="/sobre/">Sobre</a>
-    <a href="/contactos/">Contactos</a>
+    <!-- <a href="/contactos/">Contactos</a> -->
   </py-header>
 
   <section class="hero-container">
@@ -55,24 +61,24 @@
         <py-grid style="">
           <py-card
             title="O que é o Yôga"
-            subtitle="O que é o Yôga? Porquê tantas variantes? Lê tudo aqui e descobre mais sobre esta prática milenar."
+            subtitle="O que é o Yôga? Porquê tantas variantes? Descobre mais sobre esta prática milenar."
             image="/assets/img/aum.jpg"
             href="/sobre/yoga.html"
-            style="tiny">
+            style="tiny with-image">
           </py-card>
           <py-card
             title="Benefícios do Yôga"
-            subtitle="Saúde? Energia? Bem-estar? Serenidade? Lê tudo aqui e descobre como o Yôga pode transformar a tua vida."
+            subtitle="Saúde? Energia? Serenidade? Percebe como o Yôga pode transformar a tua vida."
             image="/assets/img/suria-symbol.jpg"
-            href="/sobre/patsy.html"
-            style="tiny">
+            href="/sobre/beneficios-do-yoga.html"
+            style="tiny with-image">
           </py-card>
           <py-card
             title="Como praticar Yôga"
-            subtitle="Dicas simples para iniciares com confiança e clareza. Integra o Yôga na tua rotina diária."
+            subtitle="Temos vários tipos de aulas para integrar o Yôga na tua rotina diária."
             image="/assets/img/asana-symbol.jpg"
-            href="/sobre/patsy.html"
-            style="tiny">
+            href="/aulas/index.html"
+            style="tiny with-image">
           </py-card>
         </py-grid>
       </py-section>
@@ -95,38 +101,18 @@
 
     <section>
       <h2>Práticas</h2>
-      <!-- <py-grid style="airy">
-        <py-card 
-          title="Yôga todos os dias" 
-          image="./assets/img/living-room-janurassana.jpg"
-          href="/aulas/yoga-diario.html">
-          Começa as manhãs com energia ou faz uma pausa ao meio-dia para recarregar foco. Aulas online de Ashtanga Sádhana, adaptadas ao teu ritmo.
-        </py-card>
-        <py-card 
-          title="Gravidez & Pós-parto" 
-          image="./assets/img/pregnant-seaside-yoga.jpg"
-          href="/aulas/yoga-gravidez-pos-parto.html">
-          Programas especializados que unem Yôga, ciência e cuidado, para preparar corpo e mente antes, durante e depois do nascimento.
-        </py-card>
-      </py-grid> -->
       <py-grid style="airy">
-        <!-- <py-card 
-          title="Desafia o teu corpo" 
-          image="./assets/img/prancha-yoga.jpg"
-          href="/aulas/yoga-forca-flexibilidade.html">
-          Aulas especiais focadas em desenvolver resistência, potência e amplitude de movimento — para ires mais longe no Yôga e na vida.
-        </py-card> -->
         <py-card 
           title="Yôga todos os dias" 
           image="./assets/img/woman-practicing-living-room.jpg"
           href="/aulas/yoga-diario.html">
-          Começa as manhãs com energia ou faz uma pausa ao meio-dia para recarregar foco. Aulas online de Ashtanga Sádhana, adaptadas ao teu ritmo.
+          Começa as manhãs com energia ou faz uma pausa ao meio-dia. Aulas online de Ashtánga Sádhana, adaptadas ao teu ritmo.
         </py-card>
         <py-card 
           title="Sessões personalizadas" 
           image="./assets/img/private-yoga-lesson.jpg"
           href="/aulas/yoga-aulas-particulares.html">
-          Orientação individual para quem procura atenção exclusiva, objetivos específicos ou um acompanhamento próximo na prática.
+          Orientação diferenciada para quem procura atenção exclusiva, com objectivos específicos e acompanhamento durante prática.
         </py-card>
         <py-card 
           title="Retiros Flowen" 
@@ -163,36 +149,38 @@
      </section>
     <!-- <section class="brand-white-bg"> -->
       <section class="">
-      <h2>Cursos</h2>
+      <h2>Cursos <span style="color: var(--muted)">[Brevemente]</span></h2>
       
       <py-grid style="airy">
         <py-card 
           title="Flowen Birth"
           subtitle="Preparação física, emocional e consciente para o parto"
-          image="./assets/img/flowen-birth.jpg"
-          href="/cursos/flowen-birth.html">
-          Prepara corpo e mente para o nascimento com Yôga, respiração e conhecimento técnico especializado. Um caminho de confiança e serenidade até ao grande dia.
+          image="./assets/img/flowen-birth.jpg">
+          Prepara corpo e mente para o nascimento com a prática de Yôga. Um caminho de confiança e serenidade até ao grande dia.
         </py-card>
         <py-card 
           title="Flowen Restore" 
           subtitle="Recuperação física e emocional no pós-parto"
-          image="./assets/img/flowen-restore.jpg"
-          href="/cursos/flowen-restore.html">
+          image="./assets/img/flowen-restore.jpg">
           Restaura energia, força e equilíbrio após o parto com práticas adaptadas e orientação segura. Redescobre a tua vitalidade passo a passo, assegurando o melhor para ti e para o teu bébé.
         </py-card>
         <py-card 
           title="Flowen Nurture" 
-          subtitle="Bem-estar holístico para mães e bebés"
+          subtitle="Bem-estar físico, emocional e energético para mães e bebés"
           image="./assets/img/flowen-nurture.jpg"
-          href="/cursos/flowen-nurture.html">
-          Um espaço de cuidado e presença para a transição à maternidade. Yôga suave, fortalecimento gradual e autocuidado para viver esta fase com plenitude.
+          > 
+          <!-- adicionar acima, button-label="Registar interesse"
+              href="javascript:void(0)" -->
+          Uma prática mais dinâmica e revitalizante, pensada para mães que já ultrapassaram o pós-parto inicial. Energia, fortalecimento, gestão emocional e equilíbrio interior.
         </py-card>
       </py-grid>
     </section>
   </main>
 
   <py-footer>
-    © <span data-year></span> Flowen Yôga • Do nascimento ao renascimento
+    <div class="copyright">© <span data-year></span> Flowen Yôga • Do nascimento ao renascimento</div>
+    <div class="contacts">Descobre-nos no Instagram [<a href="https://www.instagram.com/flowen.yoga/" target="new">@flowen.yoga</a>] ou contata-nos por WhatsApp</div>
+    
   </py-footer>
 </body>
 </html>

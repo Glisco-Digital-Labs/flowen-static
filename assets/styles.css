@@ -8,7 +8,7 @@
 @import url("popup.css");
 @import url("calendar.css");
 @import url("faq.css");
-/* Minimal, modern styles for Flowen Yoga */
+/* Minimal, modern styles for Flowen Yôga */
 :root{
   --maxw: 1100px;
   --gap: 1.2rem;
@@ -93,6 +93,10 @@ section > h2{margin-top:0.6rem}
 .right-align{text-align:right;}
 .center{text-align:center;}
 .black-text{color:black;}
+
+.brand h1 a {
+  text-decoration: none;
+}
 
 @media (max-width: 600px) {
   .wrap {

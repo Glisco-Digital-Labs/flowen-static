@@ -4,12 +4,20 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Flowen — Sádhana diário</title>
-  <meta name="description" content="Flowen - Aulas diárias de Yoga, de manhã, hora do almoço e fim da tarde."/>
+  <meta name="description" content="Flowen - Aulas diárias de Yôga, de manhã, hora do almoço e fim da tarde."/>
   <link rel="stylesheet" href="/assets/styles.css" />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='46' fill='%23555'/><text x='50' y='60' font-size='56' text-anchor='middle' fill='white'>ॐ</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+  <!-- My Utility Tag Register -->
+  <script>
+    function track(eventName, params = {}) {
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ event: eventName, ...params });
+    }
+  </script>
+
   <!-- Google Tag Manager -->
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -30,16 +38,16 @@
 
   <py-header title="Flowen Yôga" subtitle="">
     <a href="/">Início</a>
-    <a href="/cursos/">Cursos</a>
+    <!-- <a href="/cursos/">Cursos</a> -->
     <a href="/aulas/">Aulas</a>
     <a href="/sobre/">Sobre</a>
-    <a href="/contactos/">Contactos</a>
+    <!-- <a href="/contactos/">Contactos</a> -->
   </py-header>
 
   <main class="wrap">
     <section class="" >
       <py-hero
-        title="Ashtanga Sádhana"
+        title="Flowen Essência e Plenitude"
         subtitle="Começa as manhãs com energia ou faz uma pausa ao meio-dia para recarregar foco. 
             <strong>Aulas diárias de Yôga online</strong>, adaptadas ao teu ritmo."
         image="/assets/img/woman-practicing-living-room.jpg"
@@ -55,57 +63,48 @@
             title="3x por dia"
             subtitle="Escolhe entre a turma Amanhecer (6:00-7:00), Meio-dia (12:45-13:45) ou Entardecer (18:00-19:00)."
             image="/assets/img/number-3x.jpg"
-            style="tiny">
+            style="tiny with-image">
           </py-card>
           <py-card
             title="60 minutos"
             subtitle="Suficientemente longas para uma prática completa, suficientemente curtas para caber na tua rotina."
             image="/assets/img/number-60.jpg"
-            style="tiny">
+            style="tiny with-image">
           </py-card>
           <py-card
             title="8 Angas"
-            subtitle="A prática completa de Ashtanga Sádhana, com pranayama, mantra, asanas e meditação."
+            subtitle="A prática completa de Ashtánga Sádhana, com pranayama, mantra, asanas e meditação."
             image="/assets/img/number-8.jpg"
-            style="tiny">
+            style="tiny with-image">
           </py-card>
         </py-grid>
       </py-section>
-    <section id="porque" class="padded inverted-secondary">
-      <py-section
-        title="Porquê praticar Ashtanga Sádhana diariamente?"
-        subtitle="A prática diária cria <strong>consistência</strong>, melhora a <strong>força e mobilidade</strong>, regula o <strong>sistema nervoso</strong> e clarifica a mente. 
-        Em Ashtanga Sádhana, o corpo, a respiração e a atenção trabalham em conjunto, promovendo <strong>energia estável</strong> e <strong>foco</strong> ao longo do dia.">
-      </py-section>
-      <py-grid style="mobile-greedy">
-          <py-card
-            title="Disciplina que liberta"
-            subtitle="Rotinas simples que reduzem a fricção da decisão e aumentam o bem-estar."
-            style="tiny centered">
-          </py-card>
-          <py-card
-            title="Respiração como âncora"
-            subtitle="Pranayama e vinyasa para estabilizar emoções e melhorar a produtividade."
-            style="tiny centered">
-          </py-card>
-          <py-card
-            title="Progressão segura"
-            subtitle="Adaptações para todos os níveis, com orientação técnica e cuidado."
-            style="tiny centered">
-          </py-card>
-        </py-grid>
+    <section id="porque" class="padded airy inverted-secondary rounded">
+        <py-section
+          title="Porquê praticar Ashtánga Sádhana diariamente?"
+          subtitle="A prática diária deste Yôga em 8 partes (<a href='/sobre/yoga.html' title='Descobre o Yôga milenar que praticamos'>Ashtánga Sádhana</a>) cria <strong>consistência</strong>, melhora a <strong>força e mobilidade</strong>, regula o <strong>sistema nervoso</strong> e clarifica a mente. 
+          Em Ashtánga Sádhana, o corpo, a respiração e a atenção trabalham em conjunto, promovendo <strong>energia estável</strong> e <strong>foco</strong> ao longo do dia.">
+        </py-section>
+        <py-grid style="mobile-greedy">
+            <py-card
+              title="Disciplina que liberta"
+              subtitle="Rotinas simples que reduzem a fricção da decisão e aumentam o bem-estar."
+              style="tiny centered">
+            </py-card>
+            <py-card
+              title="Respiração como âncora"
+              subtitle="Pranayama e vinyasa para estabilizar emoções e melhorar a produtividade."
+              style="tiny centered">
+            </py-card>
+            <py-card
+              title="Progressão segura"
+              subtitle="Adaptações para todos os níveis, com orientação técnica e cuidado."
+              style="tiny centered">
+            </py-card>
+          </py-grid>
+        </div>  
   </section>
-  <section>
-      <py-cta-strip
-        title="O que é o Ashtanga Sádhana?"
-        subtitle="Uma prática completa que integra corpo, mente e respiração. Explora como esta prática milenar eleva o teu corpo, a tua mente e o teu espírito!"
-        image="/assets/img/v-sit-position.jpg"
-        overlay="linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0.15), rgba(0,0,0,0.35), rgba(0,0,0,0.55))"
-        cta-link="/sobre/yoga.html"
-        cta-text="Explora o Yoga">
-      </py-cta-strip>
-
-    </section>
+  
     <section id="como-funciona">
       <py-section
         title="Como funciona"
@@ -199,7 +198,7 @@
           style="centered">
 
           <section class="product-card-content">
-            <div class="badge">Mais escolhido</div>
+            <!-- <div class="badge">Mais escolhido</div> -->
 
             <div class="price-line">
               <span class="price">€50<span class="per">/mês</span></span>
@@ -212,7 +211,7 @@
             </ul>
 
             <a class="cta-inline ml-onclick-form" 
-               href="#checkout-plenitude" 
+               href="javascript:void(0)" 
                aria-label="Subscrever Flowen Plenitude" 
                onclick="ml('show', 'L45KpW', true)">Subscrever Plenitude</a>
             <!-- <button class="ml-onclick-form" onclick="ml('show', 'L45KpW', true)">Click here to show form</button> -->
@@ -223,7 +222,33 @@
       </py-grid>
     </section>
 
-    
+    <section class="airy">
+      <py-section
+          title="Queres saber mais sobre o nosso tipo de Yôga e os seus benefícios?"
+          subtitle="">
+        </py-section>
+
+      <py-cta-strip
+        title="O que é o Yôga? E o Ashtánga Sádhana?"
+        subtitle="Explora esta prática milenar completa que integra corpo, mente e respiração. Eleva o teu corpo, a tua mente e o teu espírito!"
+        image="/assets/img/shiva-nataraja.jpg"
+        overlay="linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0.15), rgba(0,0,0,0.35), rgba(0,0,0,0.55))"
+        cta-link="/sobre/yoga.html"
+        cta-text="Explora o SwáSthya Yôga">
+      </py-cta-strip>
+
+    </section>
+
+    <section class="airy">
+      <py-cta-strip
+        title="Explora os Benefícios do Yôga"
+        subtitle="Menos stress, melhor postura, mais força e flexibilidade, descanso e foco profundos"
+        image="/assets/img/living-room-janurassana.jpg"
+        overlay="linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0.15), rgba(0,0,0,0.35), rgba(0,0,0,0.55))"
+        cta-link="/sobre/beneficios-do-yoga.html"
+        cta-text="Inspira-te">
+      </py-cta-strip>
+  </section>
     
   </main>
 
