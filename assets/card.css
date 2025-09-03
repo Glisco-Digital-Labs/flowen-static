@@ -47,6 +47,9 @@
 
 .card.centered .card-content {
     align-self: anchor-center;
+    /* Safari Fixes Below */
+    margin: 0 auto;
+    /* width: clamp(300px, 50vw, 90%); */
 }
 
 .card .card-content h3 {
