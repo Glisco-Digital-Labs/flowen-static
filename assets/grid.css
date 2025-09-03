@@ -35,7 +35,7 @@
 
 .grid > * { height: 100%; }
 
-@media (max-width: 1024px) {
+@media (min-width: 768px) and (max-width: 1024px) {
   .grid.airy {
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   }
@@ -50,12 +50,12 @@
   
 }
 
-@media (max-width: 768px) {
+@media (min-width: 640px) and (max-width: 768px) {
   .grid.airy {
     grid-template-columns: repeat(auto-fit, minmax(90%, 1fr));
   }
   .grid {
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(40%, 1fr));
   }
   
 }

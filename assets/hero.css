@@ -154,7 +154,7 @@
   .hero.product {
     /* Full width, max-height = 70vh as requested */
     height: auto;
-    max-height: 75vh;
+    max-height: unset;
   }
 
   .hero-image-img {
