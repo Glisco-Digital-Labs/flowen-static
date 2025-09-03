@@ -77,6 +77,10 @@
   outline: 2px solid #7aa2ff; outline-offset: 2px;
 }
 
+.popup-overlay .grid {
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
 .popup-overlay .hero-image {
     transform: scale(1.28);
 }
@@ -100,6 +104,12 @@
     width: 100%;
     align-self: center;
     margin-bottom: 0.5rem;
+}
+
+.popup-overlay .popup-content a[target="new"]::after {
+  content: "\2197";
+  font-size: 0.5rem;
+  vertical-align: super;
 }
 
 .popup-actions {

@@ -72,7 +72,7 @@ section.airy {
   margin: 3rem 0;
 }
 
-section .left-align > * {
+section.left-align > * {
   text-align: left;
 }
 
@@ -85,6 +85,10 @@ section .section-subtitle {
 .inverted-primary p,
 section.inverted-primary > * {
   color: var(--brand-white);
+}
+
+section.left-align > * {
+  text-align: left;
 }
 
 @media (max-width: 768px) {

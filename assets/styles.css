@@ -93,6 +93,9 @@ section > h2{margin-top:0.6rem}
 .right-align{text-align:right;}
 .center{text-align:center;}
 .black-text{color:black;}
+.discreet {
+  color: var(--muted)
+}
 
 .brand h1 a {
   text-decoration: none;
