@@ -40,7 +40,12 @@
       const content = this.innerHTML || '';
       this.innerHTML = `
         <footer class="site" role="contentinfo">
-          <div class="wrap">${content}</div>
+          <div class="wrap">
+              <div class="copyright">© <span data-year></span> Flowen Yôga • Do nascimento ao renascimento</div>
+              <div class="contacts">Descobre-nos no Instagram [<a href="https://www.instagram.com/flowen.yoga/" target="new">@flowen.yoga</a>] ou contata-nos por WhatsApp</div>
+              <div class="discreet">A prática de Yôga deve ser feita em segurança. Consulta o teu médico antes de iniciar, especialmente em caso de gravidez ou pós-parto.</div>
+              <div class="custom-content">${content}</div>
+          </div>
         </footer>
       `;
       // Auto year if span[data-year] exists

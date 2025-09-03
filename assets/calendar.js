@@ -9,24 +9,34 @@
   // 👉 EDITA AQUI: eventos da semana
   const events = [
     // Blocos Sádhana (dias úteis)
-    ...["Ter","Qui",].flatMap(d => ([
-      { day: d, title: "Sádhana", start: "06:00", end: "07:00", variant:"" },
-      { day: d, title: "Sádhana", start: "18:00", end: "19:00", variant:"asana" },
+
+    ...["Seg",,"Qua",,"Sex"].flatMap(d => ([
+      { day: d, title: "Sádhana", start: "06:30", end: "07:30", variant:"meditation" },
+      { day: d, title: "Sádhana", start: "12:30", end: "13:30", variant:"asana" }
+
     ])),
 
-    ...["Seg","Qua","Sex"].flatMap(d => ([
-      { day: d, title: "Sádhana", start: "06:00", end: "07:00", variant:"asana" },
+    ...[,"Ter",,"Qui",].flatMap(d => ([
+      { day: d, title: "Sádhana", start: "06:30", end: "07:30", variant:"asana" },
+      { day: d, title: "Sádhana", start: "12:30", end: "13:30" }
+
+    ])),
+
+
+    // ...["Seg","Ter","Qua","Qui","Sex"].flatMap(d => ([
+    // ])),
+
+    ...["Seg","Qui"].flatMap(d => ([
       { day: d, title: "Sádhana", start: "18:00", end: "19:00", variant:"" },
     ])),
 
-    ...["Qua","Sex"].flatMap(d => ([
-      { day: d, title: "Sádhana", start: "12:45", end: "14:00" },
+    ...["Qua"].flatMap(d => ([
+      { day: d, title: "Sádhana", start: "18:00", end: "19:00", variant:"asana" },
     ])),
 
     ...["Seg","Qui"].flatMap(d => ([
-      { day: d, title: "Sádhana", start: "12:45", end: "14:00", variant:"asana" },
+      { day: d, title: "Sádhana", start: "21:00", end: "22:00", variant:"asana" },
     ])),
-
 
     { day: "Sáb", title: "Sádhana", start: "08:30", end: "10:00", variant:"meditation"  },
     { day: "Qua", title: "Family", start: "17:00", end: "17:30", variant:"family"  },

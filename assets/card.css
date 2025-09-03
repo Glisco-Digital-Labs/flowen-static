@@ -21,6 +21,10 @@
     background-repeat: no-repeat;
 }
 
+.card.tall .card-image {
+  height: 550px;
+}  
+
 .card .card-image img {
     width: 100%;
     height: inherit;
@@ -111,6 +115,7 @@
     text-align: center;
     justify-content: center;
     height: auto;
+    align-self: auto;
 }
 
 .card.tiny .card-body {

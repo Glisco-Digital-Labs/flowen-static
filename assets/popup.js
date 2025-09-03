@@ -324,10 +324,120 @@
     }
   });
 
+  // ---- GA tracking helper
+  function track(eventName, params = {}) {
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event: eventName,
+      ...params,
+      // Optional: include page info for easier GA4 slicing
+      page_location: location.href,
+      page_path: location.pathname
+    });
+  }
+
+  // ---- util: normalize a 'target' to a stable popup key/id
+  function popupKey(target) {
+    if (!target) return null;
+    if (typeof target === 'string') return target;                  // e.g. '#tpl-newsletter' or 'newsletter_modal'
+    if (target instanceof HTMLElement) return target.id || target.dataset.popupId || target.getAttribute('data-popup-id') || target.getAttribute('id') || null;
+    return null;
+  }
+
+  // ---- simple de-dupe so we don't double-fire on identical calls
+  let _lastEmit = { type: null, from: null, to: null, ts: 0 };
+  function shouldEmit(type, fromK, toK) {
+    const now = Date.now();
+    const same = _lastEmit.type === type && _lastEmit.from === fromK && _lastEmit.to === toK && (now - _lastEmit.ts) < 150;
+    if (!same) _lastEmit = { type, from: fromK, to: toK, ts: now };
+    return !same;
+  }
+
+  // ---- state
+  window.Popup = window.Popup || {};
+  window.Popup._current = window.Popup._current || (document.documentElement.dataset.currentPopup || null);
+
+  // Keep DOM dataset in sync (handy for CSS & your existing close logic)
+  function setCurrent(nextKey) {
+    const prev = window.Popup._current || null;
+    window.Popup._current = nextKey || null;
+    if (nextKey) {
+      document.documentElement.dataset.currentPopup = nextKey;
+    } else {
+      delete document.documentElement.dataset.currentPopup;
+    }
+    return prev;
+  }
+
+  // ---- wrap your existing API
+  (function wrapPopupAPI(){
+    const origOpen  = window.Popup.open;
+    const origSwap  = window.Popup.swap;
+    const origClose = window.Popup.close;
+
+    window.Popup.open = function(target, opts = {}) {
+      const nextK = popupKey(target);
+      const prevK = window.Popup._current || null;
+
+      // Call your original logic first
+      const result = origOpen ? origOpen(target, opts) : undefined;
+
+      // If state actually changed, record it
+      if (nextK && nextK !== prevK && shouldEmit('open', prevK, nextK)) {
+        setCurrent(nextK);
+        track('popup_open', {
+          popup_id: nextK,
+          previous_popup_id: prevK || undefined,
+          reason: opts.reason || undefined,
+          variant: opts.variant || undefined,
+          content_version: opts.content_version || undefined
+        });
+      }
+      return result;
+    };
+
+    window.Popup.swap = function(to, opts = {}) {
+      const toK   = popupKey(to);
+      const fromK = window.Popup._current || null;
+
+      const result = origSwap ? origSwap(to, opts) : undefined;
+
+      if (toK && toK !== fromK && shouldEmit('swap', fromK, toK)) {
+        setCurrent(toK);
+        track('popup_content_change', {
+          popup_id: toK,              // optional, but handy to keep current normalized
+          from_state: fromK || undefined,
+          to_state: toK,
+          content_version: opts.content_version || undefined
+        });
+      }
+      return result;
+    };
+
+    window.Popup.close = function(target, opts = {}) {
+      // If no target or matches current, treat as closing current
+      const cur   = window.Popup._current || null;
+      const tKey  = popupKey(target) || cur;
+
+      const result = origClose ? origClose(target, opts) : undefined;
+
+      if (tKey && cur && shouldEmit('close', cur, null)) {
+        setCurrent(null);
+        track('popup_close', {
+          popup_id: tKey,
+          interaction_type: opts.interaction_type || undefined
+        });
+      }
+      return result;
+    };
+  })();
+
+
   // Delegate clicks for next/prev and goto (works with portal mode too)
   document.addEventListener('click', (e) => {
     const openBtn = e.target.closest('[data-popup-open]');
     if (openBtn) {
+      console.log(`on click openBtn `, window.Popup);
       e.preventDefault();
       const toSel = openBtn.getAttribute('data-popup-open');
       // Prefer swap (no flicker)
