@@ -117,7 +117,7 @@
           }
           <div class="wrap cta-strip-content">
             <h2 class="lato-regular-italic">${title}</h2>
-            ${subtitle ? `<p class="sub lato-thin">${subtitle}</p>` : ''}
+            ${subtitle ? `<p class="sub lato-light">${subtitle}</p>` : ''}
             ${ctaText ? `<a class="btn" href="${ctaLink}" aria-label="${ctaText}">${ctaText}</a>` : ''}
           </div>
         </section>
