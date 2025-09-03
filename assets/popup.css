@@ -177,3 +177,8 @@
 /* Bloqueio de scroll de fundo quando aberto */
 html.popup-lock, body.popup-lock { overflow: hidden; }
 
+@media (max-width: 640px) {
+  .popup-modal {
+    width: min(86vw, 600px);
+  }
+}
