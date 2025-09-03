@@ -88,9 +88,24 @@
   }
 }
 
-@media (max-width: 1024px) {
+/* @media (max-height: 1024px) and (min-width: 768px) {
+  .cta-strip-image img {
+    width: 100%;
+    height: auto;
+  }
+} */
+
+@media (max-width: 840px) {
   .cta-strip-image img {
     height: 100%;
     width: auto;
   }
 }
+
+/* @media (max-width: 768px) and (max-width: 1024px) {
+  .cta-strip-image img {
+    height: 100%;
+    width: auto;
+  }
+} */
+

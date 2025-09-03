@@ -167,7 +167,7 @@
        you want centered in the viewport (e.g., 60%).
        We translate the image left by that same percentage of its own width,
        aligning that vertical axis with the container center. */
-    --focal-x: 55%;
+    --focal-x: 50%;
 
     /* translateX uses the image’s own width as reference, so this is stable
        across all viewport widths. */
