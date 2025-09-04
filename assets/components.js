@@ -158,7 +158,7 @@
           }
           <div class="wrap hero-content">
             <h1 class="lato-regular-italic">${title}</h1>
-            ${subtitle ? `<p class="sub lato-thin">${subtitle}</p>` : ''}
+            ${subtitle ? `<p class="sub lato-light">${subtitle}</p>` : ''}
             <div class="hero-cta">${cta}</div>
           </div>
         </section>
